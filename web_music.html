@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Music</title>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+</head>
+
+<body>
+  <style media="screen">
+
+  </style>
+
+  <div id="video-modal"></div>
+
+  <div class="a">
+  <h1><a  href="website.html" title="Back to the start">Richard Hughes</a></h1>
+  <h2>Music</h2>
+  </div>
+
+  <div class="video-images">
+    <!--Electroacoustic-->
+    <h2>Electroacoustic</h2>
+    <img data-yt-url="https://www.youtube.com/embed/xx_VSjYWXhg" title="A Conversation"src="conversation_cover.png" width=300>
+
+    <iframe width="300" height="300" scrolling="no" frameborder="no"
+    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/655223741&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    <iframe width="300" height="300" scrolling="no" frameborder="no"
+     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/259490325&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+
+     <!--Electronic-->
+     <h2>Electronic</h2>
+    <img data-yt-url="https://www.youtube.com/embed/Uiclxomjty0" title="Glitch Dream" src="glitch_cover.png" width=300>
+    <img data-yt-url="https://www.youtube.com/embed/sYSvn8ZB2cg" title="Getting comfortable with Zane"src="getting_comfortable.png" width=300>
+    <iframe width="300" height="300" scrolling="no" frameborder="no"
+     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/502501992&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+    <!--Piano / Voice-->
+    <h2>Piano / Vocal</h2>
+    <img data-yt-url="https://www.youtube.com/embed/FkEkDcice38" title="Nocturne" src="nocturne_cover.png" width=300>
+    <iframe width="300" height="300" scrolling="no" frameborder="no"
+     src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/633803541&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+     <iframe width="300" height="300" scrolling="no" frameborder="no"
+      src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/433019388&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+      <iframe width="300" height="300" scrolling="no" frameborder="no"
+       src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/342201621&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+  </div>
+
+  <script>
+    var videoModal = document.getElementById("video-modal")
+    videoModal.onclick = (e) => {
+      videoModal.classList.remove("showing")
+      while (videoModal.firstChild) {
+        videoModal.removeChild(videoModal.firstChild);
+      }
+    }
+
+    document.querySelectorAll(".video-images img").forEach((img) => {
+      img.onclick = (e) => {
+        var iframe = document.createElement("iframe");
+        iframe.width = 960;
+        iframe.height = 540;
+        iframe.src = img.getAttribute("data-yt-url");
+        videoModal.appendChild(iframe);
+        videoModal.classList.add("showing")
+      }
+    })
+  </script>
+<footer>&copy Richard Hughes 2019</footer>
+</body>
+</html>

@@ -1,0 +1,143 @@
+html, body {
+  margin: 0;
+}
+
+title
+{
+text-decoration:none;
+}
+footer{
+  font-family: Andale Mono;
+  font-size: 75%;
+  text-align: Center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+}
+h1 {
+  margin-top: 0;
+  padding-top: 30px;
+}
+h1 a
+{
+text-decoration: none;
+color:black;
+}
+h1 a:hover
+{
+  color: #666666
+}
+h2
+{
+font-family: Andale Mono;
+text-decoration:none;
+color:black;
+}
+h2 a
+{
+text-decoration:none;
+color:black;
+}
+h2 a:hover
+{
+  color: #666666
+}
+h3 a
+{
+text-decoration:none;
+color:black;
+}
+h3 a:hover
+{
+  color: #666666
+}
+p
+{
+text-decoration:none;
+color:black;
+font-family: Andale Mono;
+}
+p a
+{
+text-decoration:none;
+color:black;
+}
+
+  div.a {
+    font-family: Andale Mono;
+    text-align: center;
+    text-decoration: none;
+    color: black;
+
+  }
+
+  div.b {
+    font-family: Andale Mono;
+    text-indent: 300px;
+    text-decoration: none;
+  }
+  f.c {
+    font-family: Andale Mono;
+
+  }
+
+  f.a {
+    font-size: 130%;
+    text-decoration: none;
+    font-family: Andale Mono;
+  }
+  .social-link {
+    padding: 10px;
+    border: 1px;
+    border-radius: 5px;
+    text-decoration:none;
+  }
+
+  .list{
+    text-decoration: none;
+    font-family: Andale Mono;
+    text-align: justify;
+  }
+
+  .gap
+   {
+     margin-left: 8em;
+   }
+
+   table {
+  font-family: Andale Mono;
+  margin-left: 30px;
+  width: 100%;
+}
+
+td, th {
+
+  text-align: left;
+  padding: 4px;
+}
+td a {
+  text-decoration: none;
+  color: black;
+}
+td a:hover {
+  color: #666666;
+}
+.video-images
+{
+  text-align: center;
+
+}
+#video-modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.8);
+}
+#video-modal iframe {
+  margin: 100px auto 0 auto;
+  display: block;
+}
+#video-modal.showing {
+  display: block;
+}
