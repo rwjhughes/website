@@ -2,18 +2,47 @@ html, body {
   margin: 0;
 }
 
+/* latin */
+@font-face {
+  font-family: 'Cousine';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cousine Regular'), local('Cousine-Regular'), url(https://fonts.gstatic.com/s/cousine/v14/d6lIkaiiRdih4SpP_SQvzA.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Cousine';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Cousine Bold'), local('Cousine-Bold'), url(https://fonts.gstatic.com/s/cousine/v14/d6lNkaiiRdih4SpP9Z8K2TnM0g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
 title
 {
 text-decoration:none;
 }
 footer{
-  font-family: Andale Mono;
+  font-family: 'Cousine';
   font-size: 75%;
   text-align: Center;
   margin-top: 2em;
   margin-bottom: 2em;
 
 }
+
+
+h1, h2, h3, h4 {
+  font-weight: normal;
+}
+
+
+
+
 h1 {
   margin-top: 0;
   padding-top: 30px;
@@ -22,6 +51,7 @@ h1 a
 {
 text-decoration: none;
 color:black;
+font-weight: regular;
 }
 h1 a:hover
 {
@@ -29,7 +59,7 @@ h1 a:hover
 }
 h2
 {
-font-family: Andale Mono;
+font-family: 'Cousine';
 text-decoration:none;
 color:black;
 }
@@ -55,7 +85,7 @@ p
 {
 text-decoration:none;
 color:black;
-font-family: Andale Mono;
+font-family: 'Cousine';
 }
 p a
 {
@@ -64,7 +94,7 @@ color:black;
 }
 
   div.a {
-    font-family: Andale Mono;
+    font-family: 'Cousine';
     text-align: center;
     text-decoration: none;
     color: black;
@@ -72,19 +102,19 @@ color:black;
   }
 
   div.b {
-    font-family: Andale Mono;
+    font-family: 'Cousine';
     text-indent: 300px;
     text-decoration: none;
   }
   f.c {
-    font-family: Andale Mono;
+    font-family: 'Cousine';
 
   }
 
   f.a {
     font-size: 130%;
     text-decoration: none;
-    font-family: Andale Mono;
+    font-family: 'Cousine';
   }
   .social-link {
     padding: 10px;
@@ -95,20 +125,34 @@ color:black;
 
   .list{
     text-decoration: none;
-    font-family: Andale Mono;
-    text-align: justify;
+    /*font-family: 'Cousine';*/
+    font-family: 'Cousine', monospace;
+    text-align: center;
   }
 
   .gap
    {
-     margin-left: 8em;
+     padding: 10px 45px;
    }
 
-   table {
-  font-family: Andale Mono;
+table {
+  font-family: 'Cousine';
   margin-left: 30px;
   width: 100%;
 }
+
+table#scores td {
+  font-size: 0.8em;
+}
+
+table#scores td a {
+
+
+  font-size: 1.5em;
+}
+
+
+
 
 td, th {
 
