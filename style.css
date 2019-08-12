@@ -1,5 +1,7 @@
 html, body {
   margin: 0;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 /* latin */
@@ -137,7 +139,6 @@ color:black;
 
 table {
   font-family: 'Cousine';
-  margin-left: 30px;
   width: 100%;
 }
 
@@ -152,7 +153,12 @@ table#scores td a {
 }
 
 
-
+#projects {
+  font-size: 1em;
+}
+#projects a {
+  font-size: 1.5em;
+}
 
 td, th {
 
