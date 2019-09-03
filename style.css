@@ -42,9 +42,6 @@ h1, h2, h3, h4 {
   font-weight: normal;
 }
 
-
-
-
 h1 {
   margin-top: 0;
   padding-top: 30px;
@@ -83,6 +80,16 @@ h3 a:hover
 {
   color: #666666
 }
+h4 a
+{
+text-decoration:none;
+color:black;
+}
+h4 a:hover
+{
+  color: #666666
+}
+
 p
 {
 text-decoration:none;
@@ -161,6 +168,9 @@ td, th {
 
   text-align: left;
   padding: 4px;
+}
+th{
+  font-size: 110%
 }
 td a {
   text-decoration: none;
