@@ -36,25 +36,44 @@
 
     </div>
   </h2>
-<!--
+  <script type="text/javascript">
+
+    // Original JavaScript code by Chirp Internet: www.chirp.com.au
+    // Please acknowledge use of this code by including this header.
+
+    window.addEventListener("DOMContentLoaded", function(e) {
+
+      var stage = document.getElementById("stage");
+      var fadeComplete = function(e) { stage.appendChild(arr[0]); };
+      var arr = stage.getElementsByTagName("a");
+      for(var i=0; i < arr.length; i++) {
+        arr[i].addEventListener("animationend", fadeComplete, false);
+      }
+
+    }, false);
+
+  </script>
   <div id="stage">
-<a href="CORK7.jpg"><img src="Pics/CORK7.jpg" width="360" ></a>
-<a href="LIN0.jpg"><img src="Pics/LIN0.jpg" width="360"></a>
-<a href="LIN1.jpg"><img src="Pics/LIN1.jpg" width="360" ></a>
-<a href="LIN2.jpg"><img src="Pics/LIN2.jpg" width="360" ></a>
-<a href="LIN3.jpg"><img src="Pics/LIN3.jpg" width="360" ></a>
-<a href="LIN4.jpg"><img src="Pics/LIN4.jpg" width="360" height="270"></a>
-<a href="LIN5.jpg"><img src="Pics/LIN5.jpg" width="360" height="270"></a>
-<a href="LIN6.jpg"><img src="Pics/LIN6.jpg" width="360" height="270"></a>
-<a href="OEP0.jpg"><img src="Pics/OEP0.jpg" width="360" height="270"></a>
-<a href="OFF0.jpg"><img src="Pics/OFF0.jpg" width="360" height="270"></a>
-<a href="OFF2.jpg"><img src="Pics/OFF2.jpg" width="360" height="270"></a>
-<a href="0FF3.jpg"><img src="Pics/OFF3.jpg" width="360" height="270"></a>
-<a href="OFF19.jpg"><img src="Pics/OFF19.jpg" width="360" height="270"></a>
-<a href="OMT2.jpg"><img src="Pics/OMT2.jpg" width="360" height="270"></a>
+<a href="CORK7.jpg"><img src="Pics/CORK7.jpg" width="500" height="333.33"></a>
+<a href="LIN0.jpg"><img src="Pics/LIN0.jpg" width="500" height="333.33"></a>
+<a href="LIN2.jpg"><img src="Pics/LIN2.jpg" width="500" height="333.33"></a>
+<a href="OEP0.jpg"><img src="Pics/OEP0.jpg" width="500" height="333.33"></a>
+<a href="OFF0.jpg"><img src="Pics/OFF0.jpg" width="500" height="333.33"></a>
+<a href="LIN4.jpg"><img src="Pics/LIN4.jpg" width="500" height="333.33"></a>
+<a href="OFF2.jpg"><img src="Pics/OFF2.jpg" width="500" height="333.33"></a>
+<a href="0FF3.jpg"><img src="Pics/OFF3.jpg" width="500" height="333.33"></a>
+<a href="LIN1.jpg"><img src="Pics/LIN1.jpg" width="500" height="333.33"></a>
+<a href="OFF19.jpg"><img src="Pics/OFF19.jpg" width="500" height="333.33"></a>
+<a href="LIN6.jpg"><img src="Pics/LIN6.jpg" width="500" height="333.33"></a>
+<a href="OMT2.jpg"><img src="Pics/OMT2.jpg" width="500" height="333.33"></a>
+<a href="HALL17.jpg"><img src="Pics/HALL17.jpg" width="500" height="333.33"></a>
+<a href="TB19.jpg"><img src="Pics/TB19.jpg" width="500" height="333.33"></a>
+<a href="LIN3.jpg"><img src="Pics/LIN3.jpg" width="500" height="333.33"></a>
+<a href="MB18.jpg"><img src="Pics/MB18.jpg" width="500" height="333.33"></a>
+<a href="LIN5.jpg"><img src="Pics/LIN5.jpg" width="500" height="333.33"></a>
 </div>
--->
-  <footer style="padding-top:25em">&copy Richard Hughes 2019 </footer> <!-- style="padding-top:25em" -->
+
+  <footer>&copy Richard Hughes 2019 </footer> <!-- style="padding-top:25em" -->
   </body>
 
 </html>

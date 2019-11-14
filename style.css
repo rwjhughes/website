@@ -141,7 +141,7 @@ color:black;
 
   .gap
    {
-     padding: 10px 45px;
+     padding: 10px 20px;
    }
 
 table {
@@ -198,3 +198,35 @@ td a:hover {
 #video-modal.showing {
   display: block;
 }
+
+#stage {
+    margin: 1em auto;
+    width: 500px;
+    height: 333.33px;
+  }
+
+  #stage a {
+    position: absolute;
+  }
+  #stage a img {
+    padding: 10px;
+    background: #fff;
+  }
+
+  #stage a:nth-of-type(1) {
+    animation-name: fader;
+    animation-delay: 8s;
+    animation-duration: 2s;
+    z-index: 20;
+  }
+  #stage a:nth-of-type(2) {
+    z-index: 10;
+  }
+  #stage a:nth-of-type(n+3) {
+    display: none;
+  }
+
+  @keyframes fader {
+    from { opacity: 1.0; }
+    to   { opacity: 0.0; }
+  }
