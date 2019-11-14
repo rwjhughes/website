@@ -131,6 +131,9 @@ color:black;
     border-radius: 5px;
     text-decoration:none;
   }
+  social-link:hover {
+    opacity: 0.2;
+  }
 
   .list{
     text-decoration: none;
@@ -201,8 +204,8 @@ td a:hover {
 
 #stage {
     margin: 1em auto;
-    width: 500px;
-    height: 333.33px;
+    width: 600px;
+    height: 400px;
   }
 
   #stage a {
