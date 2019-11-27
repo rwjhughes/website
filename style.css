@@ -200,6 +200,7 @@ td a:hover {
 }
 #video-modal.showing {
   display: block;
+  left: 0px;
 }
 
 #stage {
