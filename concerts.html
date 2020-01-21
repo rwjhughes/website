@@ -24,18 +24,53 @@
 <h4><a href="music.html">Music</a> &middot <a href="scores.html">Scores</a> &middot <a href="projects.html">Projects</a></h4>
 <h2>Concerts</h2>
 </div>
+<script type="text/javascript">
 
+  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+  // Please acknowledge use of this code by including this header.
+
+  window.addEventListener("DOMContentLoaded", function(e) {
+
+    var stage = document.getElementById("stage");
+    var fadeComplete = function(e) { stage.appendChild(arr[0]); };
+    var arr = stage.getElementsByTagName("a");
+    for(var i=0; i < arr.length; i++) {
+      arr[i].addEventListener("animationend", fadeComplete, false);
+    }
+
+  }, false);
+
+</script>
+<div id="stage">
+<a title="Oct18"><img src="Pics/CORK7.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN0.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN2.jpg" width="600" height="400"></a>
+<a title="May18"><img src="Pics/OFF0.jpg" width="600" height="400"></a>
+<a title="May18"><img src="Pics/OFF3.jpg" width="600" height="400"></a>
+<a title="Apr19"><img src="Pics/TB19.jpg" width="600" height="400"></a>
+<a title="Apr18"><img src="Pics/MB18.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN1.jpg" width="600" height="400"></a>
+<a title="May18"><img src="Pics/OFF2.jpg" width="600" height="400"></a>
+<a title="May19"><img src="Pics/OFF19.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN6.jpg" width="600" height="400"></a>
+<a title="Dec18"><img src="Pics/OMT2.jpg" width="600" height="400"></a>
+<a title="Sep19"><img src="Pics/OEP0.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN4.jpg" width="600" height="400"></a>
+<a title="Nov17"><img src="Pics/HALL17.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN3.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN5.jpg" width="600" height="400"></a>
+</div>
 <f class="c"> <!--Put gap after paragraph *indent*-->
 <table>
 <tr><td><h3>2019</h3></tr></td>
-<tr><td>24/11 Zona 010, Montreal</td></tr>
+<tr><td>24/11 Zona 10, Montreal</td></tr>
 <tr><td>01/09 Trinity Orchestra, Electric Picnic Festival, Stradbally</td></tr>
 <tr><td>31/08 Draoi, Electric Picnic Festival, Stradbally</tr></td>
 <tr><td>17/08 Draoi, Home Grown Outdoors Festival, Dublin</td></tr>
 <tr><td>10/08 Sean Being, Folláin #3, Pallas Project Studios, Dublin</td></tr>
-<tr><td>03/08 Trinity Orchestra, All Together Now Festival, Curraghmore House</td></tr>
+<tr><td>03/08 Trinity Orchestra, All Together Now Festival, Curraghmore House, Waterford</td></tr>
 <tr><td>12/07 Sean Being, Thomas House, Dublin</td></tr>
-<tr><td>22/06 Draoi, Body & Soul Festival, Ballinlough Castle</td></tr>
+<tr><td>22/06 Draoi, Body & Soul Festival, Ballinlough Castle, Meath</td></tr>
 <tr><td>16/06 Lara Gallagher Musician in Residence, DLR Lexicon, Dún Laoighre</td></tr>
 <tr><td>01/06 Trinity Orchestra, Forbidden Fruit Festival, Dublin</td></tr>
 <tr><td>25/05 Sean Being, Arroz Studios, Lisbon</td></tr>
@@ -59,7 +94,7 @@
 <tr><td>28/10 Trinity Orchestra, Metropolis Festival, Dublin</td></tr>
 <tr><td>20/10 Henry Earnest, Garden Collective, Cork</td></tr>
 <tr><td>02/09 Trinity Orchestra, Electric Picnic Festival, Stradbally</td></tr>
-<tr><td>04/08 Trinity Orchestra, All Together Now Festival, Curraghmore House</td></tr>
+<tr><td>04/08 Trinity Orchestra, All Together Now Festival, Curraghmore House, Waterford</td></tr>
 <tr><td>24/07 Trinity Orchestra, Trinity Summer Series, Dublin</td></tr>
 <tr><td>02/06 Trinity Orchestra, Forbidden Fruit Festival, Dublin</td></tr>
 <tr><td>06/04 Trinity Orchestra, Trinity Ball, Dublin</td></tr>

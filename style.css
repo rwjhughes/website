@@ -28,13 +28,13 @@ title
 {
 text-decoration:none;
 }
+
 footer{
   font-family: 'Cousine';
   font-size: 75%;
   text-align: Center;
   margin-top: 2em;
   margin-bottom: 2em;
-
 }
 
 
@@ -230,7 +230,15 @@ td a:hover {
     display: none;
   }
 
+
   @keyframes fader {
     from { opacity: 1.0; }
     to   { opacity: 0.0; }
   }
+
+  .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
