@@ -204,13 +204,16 @@ td a:hover {
 }
 
 #stage {
-    
     width: 600px;
     height: 400px;
     position: -webkit-sticky;
     position: sticky;
     top: 10%;
     z-index:-1;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
   }
 
   #stage a {
@@ -219,7 +222,6 @@ td a:hover {
   #stage a img {
     padding: 0px;
     background: #fff;
-
   }
 
   #stage a:nth-of-type(1) {
