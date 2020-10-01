@@ -23,8 +23,8 @@
 
 <SCRIPT LANGUAGE="JavaScript">
 function mailMe(form){
-    Subject=document.testform.input.value;
-    location = "mailto:richard@hughes.ie?subject="+Wiki_article;
+    subject=document.wiki.input.value;
+    location = "mailto:richard@hughes.ie?subject="+subject;
     return true;
 }
 </SCRIPT>
@@ -58,7 +58,7 @@ function mailMe(form){
 
   </f></td></tr></table>
 
-  <form class="contact-form" onSubmit="return mailMe(this.form)">
+  <form name="wiki" onSubmit="return mailMe(this.form)">
     <p>send me an interesting wikipedia article :)</p>
     <input type="text" name="input" value=""><br>
     <button type="submit" name="submit">send</button>
