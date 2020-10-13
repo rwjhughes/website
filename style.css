@@ -274,6 +274,7 @@ td a:hover {
 .page-header {
   height: 500%;
   background-image: url("purple_static.jpg");
+  background-size: cover;
 }
 
 .page-header:after {
@@ -286,6 +287,7 @@ td a:hover {
   position: fixed;
   top: -100%;
   width: 300%;
+  z-index: -1;
 }
 
 @keyframes grain {
@@ -299,4 +301,9 @@ td a:hover {
   70% { transform:translate(0%, 15%) }
   80% { transform:translate(3%, 35%) }
   90% { transform:translate(-10%, 10%) }
+}
+
+
+.shadow-header {
+  text-shadow: 2px 1px 3px white;
 }
