@@ -18,12 +18,13 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="stage.css"/>
 
 
 </head>
 
-<body>
-<a href="ceolchoirmeacha.html"><button class="gaeilge">Gaeilge</button></a>
+<body class="shadow-header">
+<a href="ceolchoirmeacha.html"><button class="ga">Gaeilge</button></a>
 
 <div class="a">
 <h1><a href="index.html" title="Back to the start">Richard Hughes</a></h1>
@@ -37,7 +38,7 @@
 
   window.addEventListener("DOMContentLoaded", function(e) {
 
-    var stage = document.getElementById("stage");
+    var stage = document.getElementById("stage0");
     var fadeComplete = function(e) { stage.appendChild(arr[0]); };
     var arr = stage.getElementsByTagName("a");
     for(var i=0; i < arr.length; i++) {
@@ -47,41 +48,59 @@
   }, false);
 
 </script>
-<div id="stage" align="right" style="width: 600px;
+<div id="stage0" align="center" style="width: 600px;
 height: 0px;
-position: -webkit-sticky;
-position: sticky;
-top: 25%;
-z-index:-1;
-margin-left: 0px;
-margin-top: 0px;
-margin-right: 0px;
-margin-bottom: 0px;">
+opacity: .8;">
 <a title="Mar20"><img src="Pics/LP4.jpg" width="600" height="400"></a>
-<a title="Oct18"><img src="Pics/CORK7.jpg" width="600" height="400"></a>
 <a title="Jul20"><img src="Pics/OXY20.png" width="600" height="400"></a>
-<a title="May19"><img src="Pics/OFF19.jpg" width="600" height="400"></a>
 <a title="Feb19"><img src="Pics/LIN0.jpg" width="600" height="400"></a>
-<a title="Jul20"><img src="Pics/GEM0.jpg" width="600" height="400"></a>
 <a title="Aug19"><img src="Pics/DLR1.jpg" width="600" height="400"></a>
-<a title="Mar20"><img src="Pics/LP1.jpg" width="600" height="400"></a>
 <a title="May18"><img src="Pics/OFF0.jpg" width="600" height="400"></a>
-<a title="Feb19"><img src="Pics/LIN2.jpg" width="600" height="400"></a>
 <a title="Aug19"><img src="Pics/DLR2.jpg" width="600" height="400"></a>
-<a title="Mar20"><img src="Pics/LP0.jpg" width="600" height="400"></a>
 <a title="May18"><img src="Pics/OFF3.jpg" width="600" height="400"></a>
-<a title="Apr19"><img src="Pics/TB19.jpg" width="600" height="400"></a>
 <a title="Apr18"><img src="Pics/MB18.jpg" width="600" height="400"></a>
-<a title="Feb19"><img src="Pics/LIN1.jpg" width="600" height="400"></a>
 <a title="May18"><img src="Pics/OFF2.jpg" width="600" height="400"></a>
-<a title="Feb19"><img src="Pics/LIN6.jpg" width="600" height="400"></a>
 <a title="Dec18"><img src="Pics/OMT2.jpg" width="600" height="400"></a>
-<a title="Sep19"><img src="Pics/OEP0.jpg" width="600" height="400"></a>
 <a title="Feb19"><img src="Pics/LIN4.jpg" width="600" height="400"></a>
-<a title="Nov17"><img src="Pics/HALL17.jpg" width="600" height="400"></a>
 <a title="Feb19"><img src="Pics/LIN3.jpg" width="600" height="400"></a>
+
+</div>
+
+
+<script type="text/javascript">
+
+  // Original JavaScript code by Chirp Internet: www.chirp.com.au
+  // Please acknowledge use of this code by including this header.
+
+  window.addEventListener("DOMContentLoaded", function(e) {
+
+    var stage = document.getElementById("stage1");
+    var fadeComplete = function(e) { stage.appendChild(arr[0]); };
+    var arr = stage.getElementsByTagName("a");
+    for(var i=0; i < arr.length; i++) {
+      arr[i].addEventListener("animationend", fadeComplete, false);
+    }
+
+  }, false);
+
+</script>
+<div id="stage1" align="right" style="width: 600px;
+height: 0px;
+opacity: .9">
+<a title="Oct18"><img src="Pics/CORK7.jpg" width="600" height="400"></a>
+<a title="May19"><img src="Pics/OFF19.jpg" width="600" height="400"></a>
+<a title="Jul20"><img src="Pics/GEM.jpg" width="600" height="400"></a>
+<a title="Mar20"><img src="Pics/LP1.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN2.jpg" width="600" height="400"></a>
+<a title="Mar20"><img src="Pics/LP0.jpg" width="600" height="400"></a>
+<a title="Apr19"><img src="Pics/TB19.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN1.jpg" width="600" height="400"></a>
+<a title="Feb19"><img src="Pics/LIN6.jpg" width="600" height="400"></a>
+<a title="Sep19"><img src="Pics/OEP0.jpg" width="600" height="400"></a>
+<a title="Nov17"><img src="Pics/HALL17.jpg" width="600" height="400"></a>
 <a title="Feb19"><img src="Pics/LIN5.jpg" width="600" height="400"></a>
 </div>
+
 <f class="c"> <!--Put gap after paragraph *indent*-->
 <table> <!-- style="position: absolute; top: 10em;" -->
 <tr><td><h3>2020</h3></tr></td>
@@ -152,7 +171,7 @@ margin-bottom: 0px;">
 
 <tr><td><h3>2014</h3></td></tr>
 
-<tr><td>20/11 ICC10, Project Arts Centhe, Dublin</td></tr>
+<tr><td>20/11 ICC10, Project Arts Centre, Dublin</td></tr>
 
 </f>
 </table>

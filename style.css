@@ -164,7 +164,7 @@ color:black;
      font-size: 18px;
    }
 
-.gaeilge{
+.ga{
   position: absolute;
   top:3%;
   right: 2%;
@@ -174,11 +174,11 @@ color:black;
   background-color: green;
 }
 
-.gaeilge:hover {
+.ga:hover {
   background-color: #0DAA2B;
 }
 
-.english{
+.en{
   position: absolute;
   top:3%;
   right: 2%;
@@ -188,7 +188,7 @@ color:black;
   background-color: #1187AB;
 }
 
-.english:hover {
+.en:hover {
   background-color: #18B1E0;
 }
 
@@ -250,45 +250,6 @@ td a:hover {
   left: 0px;
 }
 
-#stage {
-    width: 600px;
-    height: 400px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 10%;
-    z-index:-1;
-    margin-left: 0px;
-    margin-top: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-  }
-
-  #stage a {
-    position: absolute;
-  }
-  #stage a img {
-    padding: 0px;
-    background: #fff;
-  }
-
-  #stage a:nth-of-type(1) {
-    animation-name: fader;
-    animation-delay: 4s;
-    animation-duration: 1s;
-    z-index: 20;
-  }
-  #stage a:nth-of-type(2) {
-    z-index: 10;
-  }
-  #stage a:nth-of-type(n+3) {
-    display: none;
-  }
-
-
-  @keyframes fader {
-    from { opacity: 1.0; }
-    to   { opacity: 0.0; }
-  }
 
   .center {
   display: block;
@@ -296,43 +257,6 @@ td a:hover {
   margin-right: auto;
   width: 48%;
 }
-
-.content{
-  z-index: 8;
-}
-
-.page-header {
-  height: 500%;
-  background-image: url("purple_static.jpg");
-  background-size: cover;
-}
-
-.page-header:after {
-  animation: grain 18s steps(10) infinite;
-  background-image: url("noise1.jpg");
-  content: "";
-  height: 300%;
-  left: -50%;
-  opacity: 0.15;
-  position: fixed;
-  top: -100%;
-  width: 300%;
-  z-index: -1;
-}
-
-@keyframes grain {
-  0%, 100% { transform:translate(0, 0) }
-  10% { transform:translate(-5%, -10%) }
-  20% { transform:translate(-15%, 5%) }
-  30% { transform:translate(7%, -25%) }
-  40% { transform:translate(-5%, 25%) }
-  50% { transform:translate(-15%, 10%) }
-  60% { transform:translate(15%, 0%) }
-  70% { transform:translate(0%, 15%) }
-  80% { transform:translate(3%, 35%) }
-  90% { transform:translate(-10%, 10%) }
-}
-
 
 .shadow-header {
   text-shadow: 2px 1px 3px white;
