@@ -115,6 +115,7 @@ color:black;
     text-indent: 300px;
     text-decoration: none;
   }
+
   f.c {
     font-family: 'Cousine';
   }
@@ -124,6 +125,19 @@ color:black;
     text-decoration: none;
     font-family: 'Cousine';
   }
+
+  a.pon {
+    text-decoration:none;
+    color: #B261E9;
+    position: absolute;
+    bottom: 12%;
+    left: 10%;
+  }
+
+  a.pon:hover{
+    text-shadow: 2px 1px 3px blue;
+  }
+
   .social-link {
     padding: 10px;
     border: 1px;
