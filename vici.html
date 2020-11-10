@@ -18,16 +18,16 @@
 </script>
 
 <link rel="stylesheet" type="text/css" href="style.css"/>
-<a href="vici.html"><button class="ga">Gaeilge</button></a>
-</head>
 
+</head>
+<a href="wiki.html"><button class="en">English</button></a>
 <body>
 
-<div class="a">
-<h1><a href="index.html" title="Back to the start">Richard Hughes</a></h1>
-<h4><a href="music.html">Music</a> &middot <a href="scores.html">Scores</a> &middot
-    <a href="projects.html">Projects</a> &middot <a href="concerts.html">Concerts</a></h4>
-<h1 style="padding-top: 0px;">interesting wikipedia articles recently discovered</h2>
+  <div class="a">
+  <h1><a href="inneacs.html" title="Ar ais go dtí an t&uacutes">Richard Hughes</a></h1>
+  <h4><a href="ceol.html">Ceol</a> &middot <a href="scoir.html">Sc&oacuteir</a> &middot
+      <a href="tionscadail.html">Tionscadail</a> &middot <a href="ceolchoirmeacha.html">Ceolchoirmeacha</a></h4>
+<h1 style="padding-top: 0px;">ailt vicip&eacuteid suimi&uacutela aimsithe le d&eacuteana&iacute</h2>
 </div>
 
 
@@ -36,6 +36,7 @@
 <p>
 
 <f class="a", id="projects">
+
   <a href="https://en.wikipedia.org/wiki/Launeddas" target="_blank">
     Launeddas</a>
 
@@ -64,7 +65,7 @@
   <a href="https://en.wikipedia.org/wiki/Tuatha_D%C3%A9_Danann" target="_blank">
     Tuatha D&eacute Danann</a>
 
-  </f></td></tr></table>
+  </f></p></td></tr></table>
 
   <form style="margin-left: 50px" name="wikiform">
   <input name="wiki" type="text" placeholder="Wiki article" required>
@@ -81,7 +82,7 @@
     .then(response => {
         console.log('Success!', response);
         form.reset();
-        alert("Wikipedia article is sent :) Thank you");
+        alert("Sheoladh alt Vicipéid :) Go raibh maith agat");
     })
     .catch(error => console.error('Error!', error.message))
 })
