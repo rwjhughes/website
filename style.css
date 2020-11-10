@@ -206,6 +206,19 @@ color:black;
   background-color: #18B1E0;
 }
 
+.submit {
+  font-family: 'Cousine';
+  color: white;
+  background-color: #9225DB;
+}
+
+.submit:hover {
+  background-color: #B261E9;
+}
+
+input[type="text"] {
+  font-family: 'Cousine';
+}
 
 table {
   font-family: 'Cousine';

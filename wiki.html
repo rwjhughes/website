@@ -21,14 +21,6 @@
 
 </head>
 
-<SCRIPT LANGUAGE="JavaScript">
-function mailMe(form){
-    subject=document.wiki.input.value;
-    location = "mailto:richard@hughes.ie?subject="+subject;
-    return true;
-}
-</SCRIPT>
-
 <body>
 
 <div class="a">
@@ -58,11 +50,22 @@ function mailMe(form){
 
   </f></td></tr></table>
 
-  <form name="wiki" onSubmit="return mailMe(this.form)">
-    <p>send me an interesting wikipedia article :)</p>
-    <input type="text" name="input" value=""><br>
-    <button type="submit" name="submit">send</button>
+  <form name="wikiform">
+  <input name="wiki" type="text" placeholder="Wiki article" required>
+  <button class="submit" type="submit" value="Submit">Submit</button>
   </form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw6SJgL01Et_gb8ZdAe8J0JstBzuwgQEuD-clFAHo9EKD07zX8/exec'
+  const form = document.forms['wikiform']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => console.log('Success!', response))
+    .catch(error => console.error('Error!', error.message))
+  })
+</script>
 
   <footer>&copy Richard Hughes 2020 </footer> </div> <!-- style="padding-top:25em" -->
   </body>
