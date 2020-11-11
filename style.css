@@ -131,7 +131,7 @@ color:black;
     text-decoration:none;
     color: #D193EE;
     position: absolute;
-    bottom: 12%;
+    bottom: 25%;
     left: 10%;
   }
 
@@ -178,7 +178,7 @@ color:black;
      position: absolute;
      font-family: 'Cousine';
      text-decoration: none;
-     bottom: 30px;
+     bottom: 15%;
      right: 10%;
      font-size: 16px;
      color: #7FACE7;
@@ -186,7 +186,7 @@ color:black;
 
    .bottomright:hover {
       text-shadow: 2px 1px 3px #2932E9;
-      opacity:.8;
+      opacity:.9;
    }
 
 .ga{
