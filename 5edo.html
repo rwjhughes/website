@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>5-edo Calculator</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+
+<div class="a">
+<h1><a href="index.html" title="Back to the start">Richard Hughes</a></h1>
+
+<h1 style="padding-top: 0px;">5-edo Calculator [beta]</h2>
+</div>
+<form style="position: relative; text-align: center;" name="5edo">
+set <i>f</i><sub>0</sub>
+<input name="f0" type="text" placeholder="range: 55 - 220 Hz" required>
+<button class="submit" type="submit" value="Submit">Submit</button>
+</form>
+<br><br>
+
+<div id="edo"></div>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxDpb_tvJGR0WkBe5QAY4xSeLJcCQKELVdJur_dx40-aaNImQDdCBsI/exec'
+  const form = document.forms['5edo']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        console.log('Success!', response);
+        response.body.getReader().read().then(function processText({ done, value }) {
+          // console.log(value)
+          const result = new TextDecoder("utf-8").decode(value)
+          const object = JSON.parse(result)
+          console.log(object)
+          document.getElementById("edo").innerHTML =
+            "<table border=\"1\">"
+            + object.result.map(r =>
+               "<tr>" + r.map(c => `<td>${c}</td>`).join("\n") + "</tr>"
+             ).join("\n") + "</table>"
+        })
+        form.reset();
+        alert("Sent!");
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+</script>
+
+  <footer>&copy Richard Hughes 2021</footer> </div> <!-- style="padding-top:25em" -->
+  </body>
+
+  </html>
