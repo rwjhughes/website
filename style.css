@@ -239,9 +239,12 @@ color:black;
 }
 
 #edo table {
-    max-width: 33%;
-    margin-left: auto;
+  max-width: 33%;
+  margin-left: auto;
   margin-right: auto;
+}
+#edo td {
+  text-align: right;
 }
 
 input[type="text"] {

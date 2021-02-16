@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html style="background-color: #BCB2BC;">
 
 <head>
   <link rel="icon"
@@ -24,18 +24,21 @@
 
 <div class="a">
 <h1><a href="index.html" title="Back to the start">Richard Hughes</a></h1>
-<h4><a href="music.html">Music</a> &middot <a href="projects.html">Projects</a> &middot <a href="concerts.html">Concerts</a></h4>
 
 
 <h1 style="padding-top: 0px;">Equal Divisons of the Octave Calculator [beta]</h2>
 </div>
 <form style="position: relative; text-align: center;" name="5edo">
-<i>f</i><sub>0</sub>
-<input name="f0" type="text" placeholder="range: 55 - 880 Hz" required><br>
-edo
-<input name="divisions" type="text" placeholder="max 36edo" required><br>
+<p><i> f</i><sub>0</sub> (Hz)
+<input name="f0" type="text" placeholder="e.g 440" size="10" required><br>
+&nbsp edo &nbsp
+<input name="divisions" type="text" placeholder="max: 36" size="10" required><br>
+<br>
 <button class="submit" type="submit" value="Submit">Submit</button>
-</form>
+</p></form>
+
+<p style="position: relative; text-align: center;">
+  - half flat &nbsp | &nbsp ♭ flat <br> + half sharp &nbsp | &nbsp ♯ sharp</p>
 <br><br>
 
 <div id="edo"></div>
@@ -66,7 +69,7 @@ edo
 })
 </script>
 
-  <footer>&copy Richard Hughes 2021</footer> </div> <!-- style="padding-top:25em" -->
+  <footer>&copy Richard Hughes 2021</footer><!-- style="padding-top:25em" -->
   </body>
 
   </html>
