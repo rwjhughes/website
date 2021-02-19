@@ -228,23 +228,12 @@ color:black;
   font-family: 'Cousine';
   color: white;
   background-color: #9225DB;
+  border: 2px solid purple;
+  border-radius: 5px;
 }
 
 .submit:hover {
   background-color: #B261E9;
-}
-
-#edo table tr:first-child td {
-    font-weight: bold;
-}
-
-#edo table {
-  max-width: 33%;
-  margin-left: auto;
-  margin-right: auto;
-}
-#edo td {
-  text-align: right;
 }
 
 input[type="text"] {
@@ -270,6 +259,18 @@ table#scores td a {
 }
 #projects a {
   font-size: 1.5em;
+}
+
+.deeper h1, h2, h3, h4{
+  font-family: Cousine;
+  text-decoration: none;
+  color:black;
+  font-weight: regular;
+  text-align: center;
+}
+
+.deeper a:hover{
+  text-shadow: 2px 1px 3px #7361EA;
 }
 
 #deeper {

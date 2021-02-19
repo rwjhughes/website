@@ -1,0 +1,75 @@
+#edo table tr:first-child td {
+    font-weight: bold;
+    background-color: rgb(120, 158, 201);
+}
+
+#edo table {
+  max-width: 33%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(160, 181, 206);
+  border-collapse: collapse;
+  border: 2px solid #c9cee9;
+}
+#edo td {
+  text-align: right;
+}
+
+ul{
+  font-family: Cousine; font-size: 85%; margin-left: auto; margin-right: auto; width: 50%;
+  border: 1px groove #9225DB;
+  border-radius: 5px
+}
+
+li{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.hidden { display: none;}
+
+button{
+  font-family: 'Cousine';
+  color: white;
+  background-color: #9225DB;
+  border: 2px solid purple;
+  border-radius: 5px;}
+
+button:hover{
+   background-color: #B261E9;
+}
+
+#notation {
+  max-width: 75%;
+  overflow-y: scroll;
+  padding-left: 33%;
+  padding-right: 100px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#piano button{
+  font-family: Cousine;
+  font-size: 11px;
+  height: 16px;
+  border: 1px solid #7E7E7E;
+  border-radius: 3px;
+  display: block;
+  text-align: left;
+}
+
+#piano button:hover{
+  border: 2px solid red;
+}
+
+#whiteKey button {
+  background-color: white;
+  color: black;
+  width: 100px;
+}
+
+#blackKey button {
+  background-color: black;
+  color: white;
+  width: 50px;
+}
