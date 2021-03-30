@@ -284,14 +284,15 @@ table#scores td a {
 }
 
 td, th {
-
   text-align: left;
   padding: 4px;
 }
+
 th{
   font-size: 110%
 }
-td a {
+
+td a, th a {
   text-decoration: none;
   color: black;
 }

@@ -30,3 +30,41 @@
 .hex:hover{
    background: rgb(212, 17, 202);
 }
+
+#wind table tr:first-child td {
+    font-weight: bold;
+    background-color: rgb(120, 158, 201);
+}
+
+#wind table{
+    text-decoration: none;
+    text-align: fixed;
+    margin-left: 100px;
+    margin-right: 0;
+}
+/* 
+#wind tr{
+    background-color: rgb(160, 181, 206);
+} */
+
+#wind th{
+    font-size: 133%;
+}
+
+#wind td{
+    padding-top: 50px;
+}
+
+a{
+    font-size: 120%;
+}
+
+#wind a:hover {
+    text-shadow: 2px 1px 3px rgb(169, 57, 235);
+    color: blue;
+  }
+
+h1 a:hover {
+    color: blue;
+    text-shadow: 2px 1px 3px rgb(169, 57, 235);
+  }
