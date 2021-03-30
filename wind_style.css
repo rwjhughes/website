@@ -1,30 +1,34 @@
+html, body{
+    width: 100%;
+}
+
 .hex {
     float: left;
-    margin-left: 3px;
-    margin-bottom: -26px;
+    margin-left: 2px;
+    margin-bottom: -20px;
 }
 .hex .top {
     width: 0;
-    border-bottom: 30px solid rgb(13, 5, 124);
-    border-left: 52px solid transparent;
-    border-right: 52px solid transparent;
+    border-bottom: 22px solid rgb(13, 5, 124);
+    border-left: 39px solid transparent;
+    border-right: 39px solid transparent;
 }
 .hex .middle {
-    width: 104px;
-    height: 60px;
+    width: 78px;
+    height: 45px;
     background: rgb(13, 5, 124);
 }
 .hex .bottom {
     width: 0;
-    border-top: 30px solid rgb(13, 5, 124);
-    border-left: 52px solid transparent;
-    border-right: 52px solid transparent;
+    border-top: 22px solid rgb(13, 5, 124);
+    border-left: 39px solid transparent;
+    border-right: 39px solid transparent;
 }
 .hex-row {
     clear: left;
 }
 .hex-row.even {
-    margin-left: -53px;
+    margin-left: -39px;
 }
 
 .hex:hover{
@@ -38,9 +42,8 @@
 
 #wind table{
     text-decoration: none;
-    text-align: fixed;
-    margin-left: 100px;
-    margin-right: 0;
+    margin: 0 auto;
+    
 }
 /* 
 #wind tr{
