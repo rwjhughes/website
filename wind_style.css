@@ -22,9 +22,10 @@
 }
 .hex-row {
     clear: left;
+    margin-left: 39px;
 }
 .hex-row.even {
-    margin-left: -39px;
+    margin-left: 0px;
 }
 
 .hex:hover{
