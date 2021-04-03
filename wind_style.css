@@ -1,28 +1,31 @@
 .hex {
     float: left;
-    margin-left: 2px;
-    margin-bottom: -20px;
+    margin-left: 3px;
+    margin-bottom: -26px;
 }
 .hex .top {
     width: 0;
-    border-bottom: 22px solid rgb(13, 5, 124);
-    border-left: 39px solid transparent;
-    border-right: 39px solid transparent;
+    border-bottom: 30px solid rgb(13, 5, 124);
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
 }
 .hex .middle {
-    width: 78px;
-    height: 45px;
+    width: 104px;
+    height: 60px;
     background: rgb(13, 5, 124);
+    text-align: center;
+    color: rgb(0, 217, 255);
 }
+
 .hex .bottom {
     width: 0;
-    border-top: 22px solid rgb(13, 5, 124);
-    border-left: 39px solid transparent;
-    border-right: 39px solid transparent;
+    border-top: 30px solid rgb(13, 5, 124);
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
 }
 .hex-row {
     clear: left;
-    margin-left: 39px;
+    margin-left: 53px;
 }
 .hex-row.even {
     margin-left: 0px;
