@@ -1,3 +1,7 @@
+h1 a:hover {
+  color: blue;
+}
+
 #edo table tr:first-child td {
     font-weight: bold;
     background-color: rgb(120, 158, 201);
@@ -15,6 +19,47 @@
   text-align: right;
 }
 
+form{
+  position: relative;
+  left: 20px;
+}
+form span{
+  font-size: 90%;
+}
+form input{
+  display:grid;
+  margin-bottom: 5px;
+}
+form button{
+  font-size: 115%;
+}
+
+p {
+  font-size: 75%;
+  margin-bottom: 0;
+}
+
+span{
+  font-family: Cousine;
+}
+
+select{
+  font-family: Cousine;
+  font-size: 110%;
+  color: #002daa;
+  background: #ac99b8;
+  border: none;
+  border-right: 2px solid rgb(102, 0, 161, 0.2);
+  border-top: 1px solid rgb(102, 0, 161, 0.2);
+  border-radius: 5px;
+}
+
+select:hover{
+  text-shadow: 2px 1px 5px rgb(255, 87, 247);
+  border-right: 2px solid rgb(102, 0, 161);
+  border-top: 1px solid rgb(102, 0, 161);
+}
+
 ul{
   font-family: Cousine; font-size: 85%; margin-left: auto; margin-right: auto; width: 50%;
   border: 1px groove #9225DB;
@@ -30,13 +75,19 @@ li{
 
 button{
   font-family: 'Cousine';
-  color: white;
-  background-color: #9225DB;
-  border: 2px solid purple;
-  border-radius: 5px;}
+  font-weight: bold;
+  color: #002daa;
+  background-color: #ac99b8;
+  border: none;
+  border-radius: 5px;
+  border-right: 2px solid rgb(102, 0, 161, 0.2);
+  border-top: 1px solid rgba(102, 0, 161, 0.2);
+}
 
 button:hover{
-   background-color: #B261E9;
+  text-shadow: 2px 1px 5px rgb(255, 87, 247);
+  border-right: 2px solid rgb(102, 0, 161);
+  border-top: 1px solid rgb(102, 0, 161);
 }
 
 #notation {
@@ -72,4 +123,85 @@ button:hover{
   background-color: black;
   color: white;
   width: 50px;
+}
+
+#container {
+  position: relative;
+  height: 80px;
+  margin-bottom: 100px;
+  /* border: 1px solid rgb(91, 0, 165);
+  border-radius: 15px; */
+  border: none;
+  /* overflow: hidden; */
+}
+
+#imagecontainer {
+  position: absolute;
+  top: 500px;
+  right: 100px;
+  left: 600px;
+  overflow: hidden;
+}
+
+.note {
+  height: 100%;
+  width: 80px;
+  background: rgba(24, 220, 255, 0.651);
+  float: left;
+  border-right: 2px solid rgb(102, 0, 161);
+  border-top: 1px solid rgb(102, 0, 161);
+  border-radius: 15px;
+}
+
+.note:active{
+  background: rgb(113, 173, 252);
+}
+
+.note:nth-child(2n){
+  background: rgb(237, 64, 253);
+}
+
+.note:nth-child(2n):active{
+  background: rgb(203, 78, 253);
+}
+
+.slidecontainer span{
+  width: 100px;
+  display: inline-block; 
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 200px; /* Full-width */
+  height: 18px; /* Specified height */
+  border-radius: 5px;
+  background: #a483b9; /* background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 18px; /* Set a specific slider handle width */
+  height: 18px; /* Slider handle height */
+  border-radius: 18px;
+  border-right: 1px solid rgb(102, 0, 161);
+  border-top: 1px solid rgb(102, 0, 161);
+  background: #002daa; /* background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-webkit-slider-thumb:active{
+  background: #2d5bda;
 }

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html style="background-color: #c9cee9;">
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>edo synth</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+<script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="edo_style.css"/>
+</head>
+
+<body>
+    <div class="deeper">
+    <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
+    <h2 style="padding-top: 0px;">Equal Divisons of the Octave Synth [beta]</h2>
+    </div>
+    <ul>
+      <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
+      <li>[A graphic will appear for you to musically interpret using the synth.]</li>
+      <li>[It will be possible to midi map the sliders to your own device.]</li>
+    </ul>
+
+    <!-- <button value='button' name='button'>start</button> -->
+
+    <form  name="edo-cal">
+      <span><i> f</i><sub>0</sub> (Hz)</span>       
+      <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required>
+
+      <span>divisions</span>  
+      <input name="divisions" type="text" placeholder="max: 36" size="10" required>
+      <button type="submit" value="Submit">Submit</button>
+    </form><br>
+
+    <div class='field'>
+        <span class='select'>
+          <select id='oscillator-type'>
+            <option value='sine'>sine</option>
+            <option value='triangle'>triangle</option>
+            <option value='sawtooth'>sawtooth</option>
+            <option value='square'>square</option>
+          </select>
+        </span>
+    </div>
+
+    <div class="slidecontainer">
+        <p>attack</p><span id='attnum'></span>
+        <input type="range" min="0" max="1000" value="400" class="slider" id="attack">
+        <p>release</p><span id='relnum'></span>
+        <input type="range" min="0" max="1000" value="400" class="slider" id="release">
+        <p>modulation</p><span id='modnum'></span>
+        <input type="range" min="0" max="1000" value="100" class="slider" id="modulation">
+        <p>lowpass frequency</p><span id='lownum'></span>
+        <input type="range" min="0" max="1000" value="1000" class="slider" id="lowpass">
+        <p>reverb</p><span id='revnum'></span>
+        <input type="range" min="0" max="1000" value="500" class="slider" id="reverb">
+        <p>delay feedback</p><span id='feednum'></span>
+        <input type="range" min="0" max="1000" value="100" class="slider" id="feedback">
+        <p>delay time (s)</p><span id='timenum'></span>
+        <input type="range" min="0" max="1000" value="340" class="slider" id="time">
+        <p>stereo width</p><span id='stereonum'></span>
+        <input type="range" min="0" max="1000" value="500" class="slider" id="stereo">
+    </div>
+
+    <div id='imagecontainer'>
+      <p>graphic will go here...</p>
+    </div>
+
+    <div id='container'></div>
+
+    <footer style="margin-top: 30px; bottom: 0;">&copy Richard Hughes 2021</footer><!-- style="padding-top:25em" -->
+    </body>
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzu_e2M7o0RTUTsWMQyTbaGg8n5695GXgK2bL7a7MPldJ4AE5M2LQdPKUcxdrKIZghs/exec'
+const form = document.forms['edo-cal']
+
+    //get info from excel
+    form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        console.log('Success!', response);
+        response.body.getReader().read().then(function processText({ done, value }) {
+          // console.log(value)
+          const result = new TextDecoder("utf-8").decode(value)
+          const object = JSON.parse(result)
+          // console.log(result);
+          // console.log(object.result);
+
+          // fillTable(object.result)
+
+          frequencies = object.result.slice(1).map(row => Number(row[0]))
+          console.log(frequencies);
+          setfrequencytable(frequencies);
+        })
+        form.reset();
+        // alert("Sent!");
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+      
+        // function fillTable(tableResult) {
+        //   document.getElementById("edo").innerHTML =
+        //     "<table border=\"1\">"
+        //     + tableResult.map(r =>
+        //       "<tr>" + r.map(c => `<td>${c}</td>`).join("\n") + "</tr>"
+        //     ).join("\n") + "</table>"
+        // }
+
+//TONE.JS SYNTH//
+
+//effects chain
+const inmix = new Tone.Gain(0.8);
+const outmix = new Tone.Gain(0.8);
+const lowpass = new Tone.Filter(2000, "lowpass");
+const reverb = new Tone.Reverb({
+      wet: .6,
+      decay: 30,
+    });
+const delay = new Tone.PingPongDelay({
+      time: 0.1,
+      feedback: 0.7,
+      wet: 0.5,
+    });
+const stereo = new Tone.StereoWidener(0.5);
+  // inmix => lowpass filter => reverb =>
+  // delay => stereo width => outmix
+  inmix.connect(lowpass);
+  lowpass.connect(reverb);
+  reverb.connect(delay);
+  delay.connect(stereo);
+  stereo.connect(outmix);
+  outmix.toDestination();
+
+
+//synth
+const synth = new Tone.FMSynth({
+  oscillator: {
+    type: 'triangle'
+  },
+  modulationIndex: 10,
+  modulation: {
+    type: 'sawtooth'
+    },
+  modulationEnvelope: {
+        attack: 5,
+        release: 9
+    },
+  envelope: {
+    attack: 3,
+    decay: 3,
+    sustain: .8,
+    release: 8,
+    attackCurve: 'sine'
+  }
+}).connect(inmix);
+
+var notes = []
+
+function setfrequencytable(frequencies){
+  var html = '';
+  for (var i = 0; i < frequencies.length; i++) {
+    var note = frequencies[i];
+    html += `<div class='note' onmousedown='noteDown(this)' 
+    onmouseup='noteUp(this, false)' onmouseleave='noteUp(this, false)'
+    data-note='${note}'></div>`;
+  }
+  document.getElementById('container').innerHTML= html;
+}
+setfrequencytable(notes);
+
+document.querySelector("button")?.addEventListener("click", async () => {
+  await start();
+});
+
+function noteDown(elem) {
+  var note = elem.dataset.note;
+  synth.triggerAttack(note);
+  // elem.style.background = 'red'
+}
+
+function noteUp(elem) {
+  synth.triggerRelease();
+  // elem.style.background = 'orangered'
+}
+
+//oscillator
+document.getElementById("oscillator-type").addEventListener("input", e => {
+	synth.oscillator.type = e.target.value;
+});
+
+//attack
+function setAttack() { // Update the current slider value (each time you drag the slider handle)
+  var attack = (100 * Math.exp(this.value * 0.002398) - 100) / 50; //scaling from 1000
+  synth.envelope.attack = attack;
+  synth.modulationEnvelope.attack = attack;
+  document.getElementById("attnum").innerHTML = attack.toFixed(2);
+}
+document.getElementById("attack").oninput = setAttack;
+setAttack.bind(document.getElementById("attack"))();
+
+//release
+function setRelease(){
+  var release = (100 * Math.exp(this.value * 0.002398) - 100) / 33.333333;
+  synth.envelope.release = release;
+  synth.modulationEnvelope.release = release;
+  document.getElementById("relnum").innerHTML = release.toFixed(2);
+}
+document.getElementById("release").oninput = setRelease;
+setRelease.bind(document.getElementById("release"))();
+
+//modulation
+function setModulation() {
+  var modulation = this.value;
+  synth.modulationIndex.value = modulation;
+  document.getElementById("modnum").innerHTML = Math.round(modulation);
+}
+document.getElementById("modulation").oninput = setModulation;
+setModulation.bind(document.getElementById("modulation"))();
+
+//lowpass
+function setLowpass() {
+  var filterF = Math.exp(this.value * 0.00690778) * 20;
+  lowpass.frequency.value = filterF;
+  document.getElementById("lownum").innerHTML = Math.round(filterF);
+}
+document.getElementById("lowpass").oninput = setLowpass;
+setLowpass.bind(document.getElementById("lowpass"))();
+
+//reverb
+function setReverb() {
+  var reverbWet = this.value / 1000;
+  reverb.wet.value = reverbWet.toFixed(2);
+  document.getElementById("revnum").innerHTML = reverbWet.toFixed(2);
+}
+document.getElementById("reverb").oninput = setReverb;
+setReverb.bind(document.getElementById("reverb"))();
+
+//delay feedback
+function setFeedback() {
+  var feedback = this.value / 1000;
+  delay.feedback.value = feedback;
+document.getElementById("feednum").innerHTML = feedback.toFixed(2);
+}
+document.getElementById("feedback").oninput = setFeedback;
+setFeedback.bind(document.getElementById("feedback"))();
+
+//delay time
+function setdelayTime() {
+  var time = (100 * Math.exp(this.value * 0.002398) - 100) / 100;
+  delay.delayTime.value = time;
+  document.getElementById("timenum").innerHTML = time.toFixed(2);
+}
+document.getElementById("time").oninput = setdelayTime;
+setdelayTime.bind(document.getElementById("time"))();
+
+//stereo width
+function setStereo() {
+  var stereoWidth = this.value / 1000;
+  stereo.width.value = stereoWidth;
+  document.getElementById("stereonum").innerHTML = stereoWidth.toFixed(2);
+}
+document.getElementById("stereo").oninput = setStereo;
+setStereo.bind(document.getElementById("stereo"))();
+
+// console.log(synth.modulationIndex.value)
+
+// document.querySelector("button")?.addEventListener("mousedown", async () => {
+//   synth.triggerAttack(note);
+// });
+
+// document.querySelector("button")?.addEventListener("mouseup", async () => {
+//   synth.triggerRelease();
+// });
+</script>
+
+</html>
