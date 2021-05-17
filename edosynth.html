@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background-color: #c9cee9;">
+<html style="background-color: #ffffff;">
 
 <head>
   <link rel="icon"
@@ -44,7 +44,7 @@
     </form><br>
 
     <div class='field'>
-        <span class='select'>
+        <span class='select'>oscillator
           <select id='oscillator-type'>
             <option value='sine'>sine</option>
             <option value='triangle'>triangle</option>
@@ -55,20 +55,20 @@
     </div>
 
     <div class="slidecontainer">
-        <p>attack</p><span id='attnum'></span>
+        <p>attack (s)</p><span id='attnum'></span>
         <input type="range" min="0" max="1000" value="400" class="slider" id="attack">
-        <p>release</p><span id='relnum'></span>
+        <p>release (s)</p><span id='relnum'></span>
         <input type="range" min="0" max="1000" value="400" class="slider" id="release">
         <p>modulation</p><span id='modnum'></span>
         <input type="range" min="0" max="1000" value="100" class="slider" id="modulation">
-        <p>lowpass frequency</p><span id='lownum'></span>
-        <input type="range" min="0" max="1000" value="1000" class="slider" id="lowpass">
         <p>reverb</p><span id='revnum'></span>
         <input type="range" min="0" max="1000" value="500" class="slider" id="reverb">
         <p>delay feedback</p><span id='feednum'></span>
         <input type="range" min="0" max="1000" value="100" class="slider" id="feedback">
         <p>delay time (s)</p><span id='timenum'></span>
         <input type="range" min="0" max="1000" value="340" class="slider" id="time">
+        <p>lowpass frequency (Hz)</p><span id='lownum'></span>
+        <input type="range" min="0" max="1000" value="1000" class="slider" id="lowpass">
         <p>stereo width</p><span id='stereonum'></span>
         <input type="range" min="0" max="1000" value="500" class="slider" id="stereo">
     </div>
@@ -124,7 +124,6 @@ const form = document.forms['edo-cal']
 //effects chain
 const inmix = new Tone.Gain(0.8);
 const outmix = new Tone.Gain(0.8);
-const lowpass = new Tone.Filter(2000, "lowpass");
 const reverb = new Tone.Reverb({
       wet: .6,
       decay: 30,
@@ -134,9 +133,10 @@ const delay = new Tone.PingPongDelay({
       feedback: 0.7,
       wet: 0.5,
     });
+const lowpass = new Tone.Filter(2000, "lowpass");
 const stereo = new Tone.StereoWidener(0.5);
-  // inmix => lowpass filter => reverb =>
-  // delay => stereo width => outmix
+  // inmix => reverb => delay
+  // => lowpass filter => stereo width => outmix
   inmix.connect(lowpass);
   lowpass.connect(reverb);
   reverb.connect(delay);
@@ -167,7 +167,7 @@ const synth = new Tone.FMSynth({
   }
 }).connect(inmix);
 
-var notes = []
+var notes = [100,200,300,400,500,501,555,444,33,677]
 
 function setfrequencytable(frequencies){
   var html = '';
