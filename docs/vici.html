@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>wiki pages recently discovered</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+</head>
+<a href="wiki.html"><button class="en">English</button></a>
+<body>
+
+  <div class="a">
+  <h1><a href="inneacs.html" title="Ar ais go dtí an t&uacutes">Richard Hughes</a></h1>
+  <h4><a href="ceol.html">Ceol</a> &middot <a href="tionscadail.html">Tionscadail</a> &middot <a href="ceolchoirmeacha.html">Ceolchoirmeacha</a></h4>
+<h1 style="padding-top: 0px;">ailt vicip&eacuteid suimi&uacutela aimsithe le d&eacuteana&iacute</h2>
+</div>
+
+
+<table style="position: relative; left: 8%;">
+  <tr><td>
+<p>
+
+<f class="a", id="projects">
+
+  <a href="https://en.wikipedia.org/wiki/Primordial_soup" target="_blank">
+    Primordial soup</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Psychogeography" target="_blank">
+    Psychogeography</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Transhumanism" target="_blank">
+    Transhumanism</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Launeddas" target="_blank">
+    Launeddas</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Ocean_acidification" target="_blank">
+    Ocean acidification</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Gruppo_di_Improvvisazione_Nuova_Consonanza" target="_blank">
+    Gruppo di Improvvisazione Nuova Consonanza</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Actor%E2%80%93network_theory" target="_blank">
+    Actor–network theory</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Imagined_community" target="_blank">
+    Imagined community</a>
+
+    <br><br>
+
+  <a href="https://en.wikipedia.org/wiki/Tuatha_D%C3%A9_Danann" target="_blank">
+    Tuatha D&eacute Danann</a>
+
+  </f></td></tr></table>
+
+  <form style="position: relative; left: 8%;" name="wikiform">
+  <input name="wiki" type="text" placeholder="Wiki article" required>
+  <button class="submit" type="submit" value="Submit">Submit</button>
+  </form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbw6SJgL01Et_gb8ZdAe8J0JstBzuwgQEuD-clFAHo9EKD07zX8/exec'
+  const form = document.forms['wikiform']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        console.log('Success!', response);
+        form.reset();
+        alert("Sheoladh alt Vicipéid :) Go raibh maith agat");
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+</script>
+
+  <footer>&copy Richard Hughes 2021</footer> </div> <!-- style="padding-top:25em" -->
+  </body>
+
+  </html>

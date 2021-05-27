@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: richardhughes.ie
-Token: d64dc15e07aeae3f22e89fb4984314f6aeb2c17afb582e20300510f37c90cbd3
