@@ -82,12 +82,18 @@ button{
   border-radius: 5px;
   border-right: 2px solid rgba(165, 165, 165, 0.5);
   border-top: 1px solid rgba(138, 138, 138, 0.2);
+  transition: background-color 0.5s;
+}
+
+button:focus{
+  background-color: rgb(255, 207, 50);
+  text-shadow: 2px 1px 5px rgb(255, 4, 4);
 }
 
 button:hover{
-  text-shadow: 2px 1px 5px rgb(255, 4, 4);
-  border-right: 2px solid rgb(172, 172, 172);
-  border-top: 1px solid rgb(160, 160, 160);
+  border-right: 2px solid rgb(165, 165, 165);
+  text-shadow: 1px 1px 5px rgba(255, 4, 4, 0.466);
+  border-top: 1px solid rgba(138, 138, 138, 0.678);
 }
 
 #notation {
@@ -173,6 +179,10 @@ button:hover{
   background: #a8d7e7;
 }
 
+.slidecontainer{
+  margin-bottom: 20px;
+}
+
 .slidecontainer span{
   width: 100px;
   display: inline-block; 
@@ -212,4 +222,29 @@ button:hover{
 
 .slider::-webkit-slider-thumb:active{
   background: #671ca5;
+}
+
+.midich{
+  width: 17px;
+  height: 15px;
+  background-color: #b4c9e7;
+  border-radius: 5px;
+  border: none;
+  caret-color: transparent;
+  font-family: Cousine;
+  font-size: 60%;
+  opacity: 0.3;
+}
+
+.midich:focus{
+  border: 1px solid #716488;
+  outline: none !important;
+  box-shadow: 0 0 10px #a7a8aa;
+  opacity: 1;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

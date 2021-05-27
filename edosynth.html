@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html style="background-color: #ffffff;">
 
+<!-- volume control 
+output selector
+show current edo scale -->
+
 <head>
   <link rel="icon"
     type="image/png"
@@ -56,21 +60,29 @@
 
     <div class="slidecontainer">
         <p>attack (s)</p><span id='attnum'></span>
-        <input type="range" min="0" max="1000" value="400" class="slider" id="attack">
+        <input type="number" id="attch" class="midich">
+        <input type="range" min="0" max="127" value="30" class="slider" id="attack">
         <p>release (s)</p><span id='relnum'></span>
-        <input type="range" min="0" max="1000" value="400" class="slider" id="release">
+        <input type="number" id="relch" class="midich">
+        <input type="range" min="0" max="127" value="50" class="slider" id="release">
         <p>modulation</p><span id='modnum'></span>
-        <input type="range" min="0" max="1000" value="100" class="slider" id="modulation">
+        <input type="number" id="modch" class="midich">
+        <input type="range" min="0" max="127" value="6" class="slider" id="modulation">
         <p>reverb</p><span id='revnum'></span>
-        <input type="range" min="0" max="1000" value="500" class="slider" id="reverb">
+        <input type="number" id="revch" class="midich">
+        <input type="range" min="0" max="127" value="40" class="slider" id="reverb">
         <p>delay feedback</p><span id='feednum'></span>
-        <input type="range" min="0" max="1000" value="100" class="slider" id="feedback">
+        <input type="number" id="feedch" class="midich">
+        <input type="range" min="0" max="114" value="12" class="slider" id="feedback">
         <p>delay time (s)</p><span id='timenum'></span>
-        <input type="range" min="0" max="1000" value="340" class="slider" id="time">
+        <input type="number" id="timech" class="midich">
+        <input type="range" min="0" max="127" value="60" class="slider" id="time">
         <p>lowpass frequency (Hz)</p><span id='lownum'></span>
-        <input type="range" min="0" max="1000" value="1000" class="slider" id="lowpass">
+        <input type="number" id="lowch" class="midich">
+        <input type="range" min="0" max="127" value="80" class="slider" id="lowpass">
         <p>stereo width</p><span id='stereonum'></span>
-        <input type="range" min="0" max="1000" value="500" class="slider" id="stereo">
+        <input type="number" id="stereoch" class="midich">
+        <input type="range" min="0" max="127" value="63.5" class="slider" id="stereo">
     </div>
 
     <div id='imagecontainer'>
@@ -119,6 +131,49 @@ const form = document.forms['edo-cal']
         //     ).join("\n") + "</table>"
         // }
 
+//MIDI
+
+class MIDIAccess{
+    constructor(args = {}) {
+        this.onDeviceInput = args.onDeviceInput || console.log;
+    }
+
+    start() {
+       return new Promise((resolve, reject) => {
+        this._requestAccess().then(access => {
+            this.initalize(access);
+            resolve();
+        }).catch(() => reject('Something went wrong.'));
+       });     
+    }
+
+    initalize(access) {
+        const devices = access.inputs.values();
+        for (let device of devices)
+            this.initalizeDevice(device);
+    }
+
+    initalizeDevice(device) {
+        device.onmidimessage = this.onMessage.bind(this);
+    }
+
+    onMessage(message) {
+        let [_, input, value] = message.data;
+        this.onDeviceInput({ input, value });
+        // console.log({ input, value });
+    }
+
+    _requestAccess() {
+        return new Promise((resolve, reject) => {
+            if (navigator.requestMIDIAccess)
+                navigator.requestMIDIAccess()
+                .then(resolve)
+                .catch(reject);
+            else reject();
+        });
+      }
+    }
+
 //TONE.JS SYNTH//
 
 //effects chain
@@ -137,10 +192,10 @@ const lowpass = new Tone.Filter(2000, "lowpass");
 const stereo = new Tone.StereoWidener(0.5);
   // inmix => reverb => delay
   // => lowpass filter => stereo width => outmix
-  inmix.connect(lowpass);
-  lowpass.connect(reverb);
+  inmix.connect(reverb);
   reverb.connect(delay);
-  delay.connect(stereo);
+  delay.connect(lowpass);
+  lowpass.connect(stereo);
   stereo.connect(outmix);
   outmix.toDestination();
 
@@ -148,7 +203,7 @@ const stereo = new Tone.StereoWidener(0.5);
 //synth
 const synth = new Tone.FMSynth({
   oscillator: {
-    type: 'triangle'
+    type: 'sine'
   },
   modulationIndex: 10,
   modulation: {
@@ -167,7 +222,7 @@ const synth = new Tone.FMSynth({
   }
 }).connect(inmix);
 
-var notes = []
+var notes = [100,200,300,400]
 
 function setfrequencytable(frequencies){
   var html = '';
@@ -203,7 +258,7 @@ document.getElementById("oscillator-type").addEventListener("input", e => {
 
 //attack
 function setAttack() { // Update the current slider value (each time you drag the slider handle)
-  var attack = (100 * Math.exp(this.value * 0.002398) - 100) / 50; //scaling from 1000
+  var attack = (10 * Math.exp(this.value * 0.0206) - 10) / 6.342; //scaling from 127
   synth.envelope.attack = attack;
   synth.modulationEnvelope.attack = attack;
   document.getElementById("attnum").innerHTML = attack.toFixed(2);
@@ -213,7 +268,7 @@ setAttack.bind(document.getElementById("attack"))();
 
 //release
 function setRelease(){
-  var release = (100 * Math.exp(this.value * 0.002398) - 100) / 33.333333;
+  var release = (10 * Math.exp(this.value * 0.0206) - 10) / 3.9635;
   synth.envelope.release = release;
   synth.modulationEnvelope.release = release;
   document.getElementById("relnum").innerHTML = release.toFixed(2);
@@ -223,7 +278,7 @@ setRelease.bind(document.getElementById("release"))();
 
 //modulation
 function setModulation() {
-  var modulation = this.value;
+  var modulation = this.value / 127 * 1000;
   synth.modulationIndex.value = modulation;
   document.getElementById("modnum").innerHTML = Math.round(modulation);
 }
@@ -232,16 +287,19 @@ setModulation.bind(document.getElementById("modulation"))();
 
 //lowpass
 function setLowpass() {
-  var filterF = Math.exp(this.value * 0.00690778) * 20;
+  var filterF = (Math.exp(this.value * 0.038205) - 1) * 157.48;
   lowpass.frequency.value = filterF;
   document.getElementById("lownum").innerHTML = Math.round(filterF);
+  if (!this.type){
+    document.getElementById("lowpass").value = this.value;
+  }
 }
 document.getElementById("lowpass").oninput = setLowpass;
 setLowpass.bind(document.getElementById("lowpass"))();
 
 //reverb
 function setReverb() {
-  var reverbWet = this.value / 1000;
+  var reverbWet = this.value / 127;
   reverb.wet.value = reverbWet.toFixed(2);
   document.getElementById("revnum").innerHTML = reverbWet.toFixed(2);
 }
@@ -250,7 +308,7 @@ setReverb.bind(document.getElementById("reverb"))();
 
 //delay feedback
 function setFeedback() {
-  var feedback = this.value / 1000;
+  var feedback = (this.value / 127);
   delay.feedback.value = feedback;
 document.getElementById("feednum").innerHTML = feedback.toFixed(2);
 }
@@ -259,7 +317,7 @@ setFeedback.bind(document.getElementById("feedback"))();
 
 //delay time
 function setdelayTime() {
-  var time = (100 * Math.exp(this.value * 0.002398) - 100) / 100;
+  var time = (10 * Math.exp(this.value * 0.0206) - 10) / 12.68;
   delay.delayTime.value = time;
   document.getElementById("timenum").innerHTML = time.toFixed(2);
 }
@@ -268,7 +326,7 @@ setdelayTime.bind(document.getElementById("time"))();
 
 //stereo width
 function setStereo() {
-  var stereoWidth = this.value / 1000;
+  var stereoWidth = this.value / 127;
   stereo.width.value = stereoWidth;
   document.getElementById("stereonum").innerHTML = stereoWidth.toFixed(2);
 }
@@ -284,6 +342,17 @@ setStereo.bind(document.getElementById("stereo"))();
 // document.querySelector("button")?.addEventListener("mouseup", async () => {
 //   synth.triggerRelease();
 // });
-</script>
 
+const midi = new MIDIAccess({ onDeviceInput });
+midi.start().then(() => {
+    console.log('Started!');
+}).catch(console.error);
+
+function onDeviceInput({ input, value }) {
+  if (input == 77) setLowpass.bind({value})();
+  console.log('onDeviceInput!', input, value);
+}
+
+
+</script>
 </html>
