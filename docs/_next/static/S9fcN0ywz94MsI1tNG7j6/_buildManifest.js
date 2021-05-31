@@ -1,0 +1,1 @@
+self.__BUILD_MANIFEST={__rewrites:{beforeFiles:[],afterFiles:[],fallback:[]},"/_error":["static/chunks/pages/_error-a9f53acb468cbab8a6cb.js"],"/edomidi":["static/chunks/400-bdedad81c8e784d3b4ab.js","static/chunks/pages/edomidi-b8c4bd35c5cdb52d87bb.js"],sortedPages:["/_app","/_error","/edomidi"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();

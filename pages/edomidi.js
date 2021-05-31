@@ -12,7 +12,7 @@ const makeSynth = () => {
 
   //effects chain
   const inmix = new Tone.Gain(0.8);
-  const outmix = new Tone.Gain(0.8);
+  const gain = new Tone.Gain(0.8);
   const reverb = new Tone.Reverb({
         wet: .6,
         decay: 30,
@@ -25,13 +25,13 @@ const makeSynth = () => {
   const lowpass = new Tone.Filter(2000, "lowpass");
   const stereo = new Tone.StereoWidener(0.5);
     // inmix => reverb => delay
-    // => lowpass filter => stereo width => outmix
+    // => lowpass filter => stereo width => gain
     inmix.connect(reverb);
     reverb.connect(delay);
     delay.connect(lowpass);
     lowpass.connect(stereo);
-    stereo.connect(outmix);
-    outmix.toDestination();
+    stereo.connect(gain);
+    gain.toDestination();
 
   //synth
   const synth = new Tone.FMSynth({
@@ -61,7 +61,7 @@ const makeSynth = () => {
     stereo,
     delay,
     reverb,
-    outmix
+    gain,
   }
 }
 
@@ -88,7 +88,7 @@ const parameters = {
   },
   modulation: {
     label: "modulation",
-    mapping: input => input / 127 * 1000,
+    mapping: input => (10 * Math.exp(input * 0.0206) - 10) * 7.884,
     round: true,
     device: "synth",
     assign: (synth, value) => synth.modulationIndex.value = value
@@ -102,7 +102,7 @@ const parameters = {
   },
   feedback: {
     label: "feedback",
-    mapping: input => input / 127,
+    mapping: input => input / 158,
     round: false,
     device: "delay",
     assign: (delay, value) => {
@@ -129,6 +129,13 @@ const parameters = {
     round: false,
     device: "stereo",
     assign: (stereo, value) => stereo.width.value = value
+  },
+  gain: {
+    label: "gain",
+    mapping: input => input / 127,
+    round: false,
+    device: "gain",
+    assign: (gain, value) => gain.gain.value = value
   },
 }
 
@@ -159,6 +166,7 @@ const Home = () => {
     time: 60,
     lowpass: 80,
     stereo: 63.5,
+    gain: 101,
   })
   const [changingParameter, setChangingParameter] = useState()
   const [midiInputMap, setMidiInputMap] = useState([{}, {}])
@@ -266,6 +274,18 @@ const Home = () => {
 
 
   return <div>
+
+<div class="deeper">
+    <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
+    <h2>Equal Divisons of the Octave Synth [beta]</h2>
+    </div>
+    <ul>
+      <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
+      <li>You can MIDI map your own deivce to the sliders and the map will be stored locally.</li>
+      <li>The keys are assigned to your computer keyboard, from top right to bottom left.</li>
+      <li>[A series of graphics will appear for you to musically interpret using the synth.]</li>
+    </ul>
+
     <form name="edo-cal">
       <span><i> f</i><sub>0</sub> (Hz)</span>
       <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required onChange={e => setF0(Number(e.target.value))} />
@@ -314,8 +334,8 @@ const Home = () => {
           changeParameter={() => setChangingParameter(name)}
         />
       })}
-
-      <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }} className="clear">Clear midi map</button>
+      <br/>
+      <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }} className="clear">clear midi map</button>
     </div>
 
 
