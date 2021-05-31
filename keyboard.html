@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html style="background-color: #c9cee9;">
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>edo Keyboard</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+<script src="https://unpkg.com/tone@14.7.77/build/Tone.js"></script>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+<link rel="stylesheet" type="text/css" href="edo_style.css"/>
+</head>
+
+<body>
+    <div class="deeper">
+    <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
+    <h2 style="padding-top: 0px;">Equal Divisons of the Octave Keyboard [alpha]</h2>
+    </div>
+    <ul>
+      <li>making a tone.js microtonal keyboard...</li>
+    </ul>
+
+    <!-- <button value='button' name='button'>start</button> -->
+
+    <div style="position: relative; text-align: center;">
+        <form  name="edo-cal">
+          <p><i> f</i><sub>0</sub> (Hz) &nbsp
+            <input name="f0" id="f0" type="text" placeholder="e.g 440" size="10" required><br>
+            divisions
+            <input name="divisions" type="text" placeholder="max: 36" size="10" required><br>
+            <br>
+            <button type="submit" value="Submit">Submit</button>
+          </p>
+        </form>
+    </div>
+
+    <div id='container'></div>
+
+    <div id="edo"></div>
+
+<script>
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzkqewD0LJBSTTDvPNkmHf_-ORkd1Gd_g8dDXAyf9nOCmz-rGIs654vr_3mFV_vIc50/exec'
+const form = document.forms['edo-cal']
+
+    //get info from excel
+    form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+        console.log('Success!', response);
+        response.body.getReader().read().then(function processText({ done, value }) {
+          // console.log(value)
+          const result = new TextDecoder("utf-8").decode(value)
+          const object = JSON.parse(result)
+
+          fillTable(object.result)
+
+          frequencies = object.result.slice(1).map(row => Number(row[0]))
+        })
+        form.reset();
+        // alert("Sent!");
+    })
+    .catch(error => console.error('Error!', error.message))
+})
+      
+        // function fillTable(tableResult) {
+        //   document.getElementById("edo").innerHTML =
+        //     "<table border=\"1\">"
+        //     + tableResult.map(r =>
+        //       "<tr>" + r.map(c => `<td>${c}</td>`).join("\n") + "</tr>"
+        //     ).join("\n") + "</table>"
+        // }
+
+//tone.js synth
+const inmix = new Tone.Gain(0.6);
+const outmix = new Tone.Gain(0.6);
+const lowp = new Tone.Filter(2000, "lowpass");
+const reverb = new Tone.Reverb({
+      wet: .6,
+      decay: 30,
+    });
+  //inmix => lowpass filter => reverb => outmix
+  inmix.connect(lowp);
+  lowp.connect(reverb);
+  reverb.connect(outmix);
+  outmix.toDestination();
+
+const synth = new Tone.FMSynth({
+  oscillator: {
+    type: 'triangle'
+  },
+  modulationIndex: 10,
+  modulation: {
+    type: 'sawtooth'
+  },
+  envelope: {
+    attack: 3,
+    decay: 3,
+    sustain: .8,
+    release: 8,
+    attackCurve: 'sine'
+  }
+}).connect(inmix);
+
+var notes = [210, 220, 233, 248]
+
+var html = '';
+for (var i = 0; i < notes.length; i++) {
+  var note = notes[i];
+  html += `<div class='note' onmousedown='noteDown(this)' 
+  onmouseup='noteUp(this, false)' onmouseleave='noteUp(this, false)'
+  data-note='${note}'></div>`;
+}
+
+document.getElementById('container').innerHTML= html;
+
+document.querySelector("button")?.addEventListener("click", async () => {
+  await start();
+});
+
+function noteDown(elem) {
+  var note = elem.dataset.note;
+  synth.triggerAttack(note);
+  elem.style.background = 'red'
+}
+
+function noteUp(elem) {
+  synth.triggerRelease();
+  elem.style.background = 'orangered'
+}
+
+// document.querySelector("button")?.addEventListener("mousedown", async () => {
+//   synth.triggerAttack(note);
+// });
+
+// document.querySelector("button")?.addEventListener("mouseup", async () => {
+//   synth.triggerRelease();
+// });
+</script>

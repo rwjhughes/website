@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html style="background-color: #BCB2BC;">
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+<title>Deeper</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+</head>
+
+<body>
+  <a href="focal.html"><button class="ga">Gaeilge</button></a>
+
+  <div class="deeper">
+  <h1><a href="index.html" title="Back to the start">Richard Hughes</a></h1>
+  <h4><a href="music.html">Music</a> &middot <a href="projects.html">Projects</a> &middot <a href="concerts.html">Concerts</a></h4>
+  </div>
+
+    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <span class="focal"></span>
+        <button class="generate">Generate</button>
+    </div>
+
+<script>
+    // import java.util.List;
+    const focal = document.querySelector('.focal');
+    const generate = document.querySelector('.generate');
+
+    // List<String> result = Files.readAllLines(Paths.get('allwords.txt'));
+
+    const genArr = ['a','b','c','d'];
+
+    generate.addEventListener('click', ()=>{
+        let gen = Math.floor(Math.random()*genArr.length);
+        focal.innerText = genArr[gen];
+    });
+</script>
+
+<footer>&copy Richard Hughes 2021</footer>
+</body>
+
+</html>

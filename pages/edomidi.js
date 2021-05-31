@@ -67,7 +67,7 @@ const makeSynth = () => {
 
 const parameters = {
   attack: {
-    label: "Attack (s)",
+    label: "attack (s)",
     mapping: input => (10 * Math.exp(input * 0.0206) - 10) / 6.342, //scaling from 127
     round: false,
     device: "synth",
@@ -77,7 +77,7 @@ const parameters = {
     }
   },
   release: {
-    label: "release",
+    label: "release (s)",
     mapping: input => (10 * Math.exp(input * 0.0206) - 10) / 3.9635,
     round: false,
     device: "synth",
@@ -110,14 +110,14 @@ const parameters = {
     }
   },
   time: {
-    label: "time",
+    label: "time (s)",
     mapping: input => (10 * Math.exp(input * 0.0206) - 10) / 12.68,
     round: false,
     device: "delay",
     assign: (delay, value) => delay.delayTime.value = value
   },
   lowpass: {
-    label: "lowpass",
+    label: "lowpass (Hz)",
     mapping: input => (Math.exp(input * 0.038205) - 1) * 157.48,
     round: true,
     device: "lowpass",
@@ -137,8 +137,8 @@ const Slider = ({ label, displayValue, input, setInput, midiInput, changeParamet
     <p>{label}</p>
     <span>{displayValue}</span>
     {/* <input type="number" id="attch" class="midich" /> */}
+    <button className="midimap" onClick={changeParameter}>{midiInput ? (midiInput === "set" ? "map" : `${midiInput}`) : `map`}</button>
     <input type="range" min="0" max="127" value={input} className="slider" onChange={e => setInput(Number(e.target.value))} />
-    <button className="midimap" onClick={changeParameter}>{midiInput ? (midiInput === "set" ? "move knob" : `= ${midiInput}`) : `midi map`}</button>
   </div>
 }
 
@@ -165,7 +165,7 @@ const Home = () => {
   const [layoutMap, setLayoutMap] = useState()
 
 
-  const invalidNumbers = isNaN(f0) || isNaN(divisions) || divisions < 1 || divisions >36 || f0 < 1
+  const invalidNumbers = isNaN(f0) || isNaN(divisions) || divisions < 1 || divisions >24 || f0 < 1
 
   const notes = []
   const twoDivisions = divisions * 2
@@ -271,14 +271,14 @@ const Home = () => {
       <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required onChange={e => setF0(Number(e.target.value))} />
 
       <span>divisions</span>  
-      <input name="divisions" type="text" placeholder="max: 36" size="10" required onChange={e => setDivisions(Number(e.target.value))} />
+      <input name="divisions" type="text" placeholder="max: 24" size="10" required onChange={e => setDivisions(Number(e.target.value))} />
 
       {invalidNumbers && <p>enter a valid number in both boxes</p>}
 
     </form><br/>
 
     <div className='field'>
-      <span>oscillator2</span>
+      <span>oscillator</span>
       <select id='oscillator-type' onChange={e => audioDevices.synth.oscillator.type = e.target.value}>
         <option value='sine'>sine</option>
         <option value='triangle'>triangle</option>
@@ -315,7 +315,7 @@ const Home = () => {
         />
       })}
 
-      <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }}>Clear midi map</button>
+      <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }} className="clear">Clear midi map</button>
     </div>
 
 

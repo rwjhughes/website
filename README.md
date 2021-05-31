@@ -1,3 +1,7 @@
+npm run dev => start localhost
+
+npm run export => compile js
+
 To check status
 git status
 
