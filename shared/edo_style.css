@@ -354,9 +354,6 @@ td a:hover {
   cursor: pointer;
 }
 
-
-
-
 h1 a:hover {
   color: blue;
 }
@@ -425,7 +422,7 @@ select:hover{
 
 ul{
   font-family: Cousine; font-size: 85%; margin-left: auto; margin-right: auto; width: 50%;
-  border: 1px groove rgb(255, 214, 80); background-color: rgb(255, 237, 177) ;
+  border: 1px groove rgb(255, 214, 80); background-color: rgb(255, 237, 177);
   border-radius: 5px
 }
 
@@ -619,4 +616,34 @@ button.clear:focus{
 
 .slider::-webkit-slider-thumb:active{
   background: #671ca5;
+}
+
+#invalid{
+  color:white;
+  background:rgb(187, 11, 11);
+  max-width: 250px;
+  border: 2px solid;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+}
+ul a{
+  text-decoration: none;
+  color: rgb(39, 107, 96);
+}
+
+ul a:hover{
+  color: rgb(49, 126, 113);
+  text-shadow: 2px 1px 3px rgba(88, 90, 189, 0.644);
+}
+
+
+#begin{
+  background-color: rgb(255, 237, 177);
+  opacity: 1;
+  transition: background-color .3s;
+}
+
+#begin:hover{
+  background-color: rgb(255, 214, 80);
 }

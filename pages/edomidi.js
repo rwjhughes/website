@@ -1,4 +1,4 @@
-import { Animated, Basic, bounce, Combined } from '../shared/styles'
+import { SlideshowContainer, SlideshowImage, FlexRow, FlexGrow } from '../shared/styles'
 import { useEffect, useState, useRef } from 'react'
 import * as Tone from 'tone'
 
@@ -23,14 +23,12 @@ const makeSynth = () => {
         wet: 0.5,
       });
   const lowpass = new Tone.Filter(2000, "lowpass");
-  const stereo = new Tone.StereoWidener(0.5);
     // inmix => reverb => delay
-    // => lowpass filter => stereo width => gain
+    // => lowpass filter => gain
     inmix.connect(reverb);
     reverb.connect(delay);
     delay.connect(lowpass);
-    lowpass.connect(stereo);
-    stereo.connect(gain);
+    lowpass.connect(gain);
     gain.toDestination();
 
   //synth
@@ -58,7 +56,6 @@ const makeSynth = () => {
   return {
     synth,
     lowpass,
-    stereo,
     delay,
     reverb,
     gain,
@@ -118,17 +115,10 @@ const parameters = {
   },
   lowpass: {
     label: "lowpass (Hz)",
-    mapping: input => (Math.exp(input * 0.038205) - 1) * 157.48,
+    mapping: input => (Math.exp(input * 0.038205) - 1) * 157.32 +20,
     round: true,
     device: "lowpass",
     assign: (lowpass, value) => lowpass.frequency.value = value
-  },
-  stereo: {
-    label: "stereo",
-    mapping: input => input / 127,
-    round: false,
-    device: "stereo",
-    assign: (stereo, value) => stereo.width.value = value
   },
   gain: {
     label: "gain",
@@ -158,20 +148,30 @@ const Home = () => {
 
   const [audioDevices, setAudioDevices] = useState(null)
   const [paramValues, setParamValues] = useState({
-    attack: 30,
-    release: 50,
-    modulation: 6,
-    reverb: 40,
-    feedback: 12,
-    time: 60,
-    lowpass: 80,
-    stereo: 63.5,
+    attack: Math.random()*127,
+    release: Math.random()*127,
+    modulation: Math.random()*127,
+    reverb: Math.random()*127,
+    feedback: Math.random()*127,
+    time: Math.random()*127,
+    lowpass: Math.random()*122+5,
     gain: 101,
+    // attack: Math.random()*127,
+    // release: 50,
+    // modulation: 6,
+    // reverb: 40,
+    // feedback: 12,
+    // time: 60,
+    // lowpass: 80,
+    // gain: 101,
   })
   const [changingParameter, setChangingParameter] = useState()
   const [midiInputMap, setMidiInputMap] = useState([{}, {}])
   const [layoutMap, setLayoutMap] = useState()
 
+  const [visibleImages, setVisibleImages] = useState([]) // useState([...Array(14).keys()]) 
+  const [slideshowIteration, setSlideshowIteration] = useState(0)
+  const [slideshowEndMs, setSlideshowEndMs] = useState()
 
   const invalidNumbers = isNaN(f0) || isNaN(divisions) || divisions < 1 || divisions >24 || f0 < 1
 
@@ -265,78 +265,158 @@ const Home = () => {
     }
   }, [notes, audioDevices])
 
-  // useEffect(() => {
-    
-  // }, [paramValues])
 
 
-  // parameters["attack"]
+  useEffect(() => {
+    // 0 means dont continue
+    if (slideshowIteration === 0) { return }
 
+    // if we have and ending time and it is or past ending time
+    if (slideshowEndMs && new Date().getTime() >= slideshowEndMs) {
+      console.log("autoend")
+      setSlideshowEndMs(undefined)
+      setVisibleImages([])
+      setSlideshowIteration(0)
+      return
+    }
+
+    progressSlideshow()
+
+    const secondsUntilNext = Math.floor(Math.random() * 15) + 15 //between 20-30s
+    console.log("setupnext", secondsUntilNext)
+    setTimeout(() => {
+      setSlideshowIteration(slideshowIteration + 1)
+    }, secondsUntilNext*1000)
+  }, [slideshowIteration])
+
+
+  const toggleSlideshow = () => {
+    // if we have a slideshowEndMs (i.e. we already started)
+    if (slideshowEndMs) {
+      // end it
+      setSlideshowIteration(0)
+      setSlideshowEndMs(undefined)
+      setVisibleImages([])
+    } else {
+      // start it: set the ending time and set iteration = 1
+      setSlideshowEndMs(new Date().getTime() + 360000) // TODO 360000
+      setSlideshowIteration(1)
+    }
+  }
+
+  const progressSlideshow = () => {
+    if (visibleImages.length < 2) {
+      addRandomImage()
+    } else if (visibleImages.length === 2) {
+      Math.random() > 0.5 ? addRandomImage() : removeRandomImage()
+    } else if (visibleImages.length > 2 && visibleImages.length < 6) {
+      Math.random() > 0.8 ? addRandomImage() : removeRandomImage()
+    } else {
+      removeRandomImage()
+    }
+  }
+
+  const addRandomImage = () => {
+    let newIndex
+    do {
+      newIndex = Math.floor(Math.random() * 14)
+    } while (visibleImages.includes(newIndex))
+    const newImages = [...visibleImages, newIndex]
+    console.log("adding", visibleImages, newIndex, newImages)
+    setVisibleImages(newImages)
+  }
+
+  const removeRandomImage = () => {
+    const indexToRemove = Math.floor(Math.random() * visibleImages.length)
+    const newImages = [...visibleImages.slice(0, indexToRemove), ...visibleImages.slice(indexToRemove+1, visibleImages.length)]
+    console.log("removing", visibleImages, "index", indexToRemove, newImages)
+    setVisibleImages(newImages)
+  }
 
   return <div>
-
-<div class="deeper">
-    <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
-    <h2>Equal Divisons of the Octave Synth [beta]</h2>
+    <div class="deeper">
+      <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
+      <h2>Equal Divisons of the Octave Synth [beta]</h2>
     </div>
     <ul>
       <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
       <li>You can MIDI map your own deivce to the sliders and the map will be stored locally.</li>
-      <li>The keys are assigned to your computer keyboard, from top right to bottom left.</li>
+      <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>
       <li>[A series of graphics will appear for you to musically interpret using the synth.]</li>
     </ul>
+    <ul id="acknowledge">
+      Thanks to <a href="https://rory.ie" target="_blank">Rory Hughes</a> for help with coding<br/>&<br/>
+      <a href="http://evangelineallize.com/" target="_blank">Evangéline Durand-Allizé</a> & <a href="https://www.instagram.com/vivienjunebruschi/" target="_blank">Viven Bruschi</a> for the graphics
+    </ul>
 
-    <form name="edo-cal">
-      <span><i> f</i><sub>0</sub> (Hz)</span>
-      <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required onChange={e => setF0(Number(e.target.value))} />
+    <FlexRow>
+      <div>
+        <form name="edo-cal">
+          <span><i> f</i><sub>0</sub> (Hz)</span>
+          <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required onChange={e => setF0(Number(e.target.value))} />
 
-      <span>divisions</span>  
-      <input name="divisions" type="text" placeholder="max: 24" size="10" required onChange={e => setDivisions(Number(e.target.value))} />
+          <span>divisions</span>  
+          <input name="divisions" type="text" placeholder="max: 24" size="10" required onChange={e => setDivisions(Number(e.target.value))} />
 
-      {invalidNumbers && <p>enter a valid number in both boxes</p>}
+          {invalidNumbers && <p id="invalid">enter a valid number in both boxes</p>}
+        </form><br/>
 
-    </form><br/>
+        <div className='field'>
+          <span>oscillator</span>
+          <select id='oscillator-type' onChange={e => audioDevices.synth.oscillator.type = e.target.value}>
+            <option value='sine'>sine</option>
+            <option value='triangle'>triangle</option>
+            <option value='sawtooth'>sawtooth</option>
+            <option value='square'>square</option>
+          </select>
+        </div>
+        
+        <div className="slidecontainer">
+          {Object.keys(parameters).map(name => {
+            const { label, mapping, round, device, assign } = parameters[name]
 
-    <div className='field'>
-      <span>oscillator</span>
-      <select id='oscillator-type' onChange={e => audioDevices.synth.oscillator.type = e.target.value}>
-        <option value='sine'>sine</option>
-        <option value='triangle'>triangle</option>
-        <option value='sawtooth'>sawtooth</option>
-        <option value='square'>square</option>
-      </select>
-    </div>
+            const setInput = (input) => {
+              setParamValues({
+                ...paramValues,
+                [name]: input
+              })
+            }
+            const input = paramValues[name]
+            const scaled = mapping(input)
+            if (audioDevices) {
+              assign(audioDevices[device], scaled)
+            }
+
+            const displayValue = round ? Math.round(scaled) : scaled.toFixed(2)
+            return <Slider
+              key={name}
+              label={label}
+              displayValue={displayValue}
+              input={input}
+              setInput={setInput}
+              midiInput={changingParameter && changingParameter === name ? "set" : midiInputMap[0][name]}
+              changeParameter={() => setChangingParameter(name)}
+            />
+          })}
+          <br/>
+          <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }} className="clear">clear midi map</button>
+        </div>
+      </div>
+      <FlexGrow>
+        <button id="begin" onClick={() => toggleSlideshow()}>{slideshowEndMs ? 'stop' : 'start'}</button>
+
+        {/* visible: {JSON.stringify(visibleImages)} iteration: {JSON.stringify(slideshowIteration)} */}
+
+        <SlideshowContainer>
+          {[...Array(14).keys()].map(n =>
+            <SlideshowImage key={n} visible={visibleImages.includes(n)} src={`edographics/${n}.png`} />
+          )}
+
+        </SlideshowContainer>
+
+      </FlexGrow>
+    </FlexRow>
     
-    <div className="slidecontainer">
-      {Object.keys(parameters).map(name => {
-        const { label, mapping, round, device, assign } = parameters[name]
-
-        const setInput = (input) => {
-          setParamValues({
-            ...paramValues,
-            [name]: input
-          })
-        }
-        const input = paramValues[name]
-        const scaled = mapping(input)
-        if (audioDevices) {
-          assign(audioDevices[device], scaled)
-        }
-
-        const displayValue = round ? Math.round(scaled) : scaled.toFixed(2)
-        return <Slider
-          key={name}
-          label={label}
-          displayValue={displayValue}
-          input={input}
-          setInput={setInput}
-          midiInput={changingParameter && changingParameter === name ? "set" : midiInputMap[0][name]}
-          changeParameter={() => setChangingParameter(name)}
-        />
-      })}
-      <br/>
-      <button onClick={() => { setMidiInputMap([{}, {}]); localStorage.removeItem("midiMap") }} className="clear">clear midi map</button>
-    </div>
 
 
     <div id='container'>
