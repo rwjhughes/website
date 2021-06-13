@@ -282,7 +282,7 @@ const Home = () => {
 
     progressSlideshow()
 
-    const secondsUntilNext = Math.floor(Math.random() * 15) + 15 //between 20-30s
+    const secondsUntilNext = Math.floor(Math.random() * 10) +15 //between 10-25s
     console.log("setupnext", secondsUntilNext)
     setTimeout(() => {
       setSlideshowIteration(slideshowIteration + 1)
@@ -308,8 +308,8 @@ const Home = () => {
     if (visibleImages.length < 2) {
       addRandomImage()
     } else if (visibleImages.length === 2) {
-      Math.random() > 0.5 ? addRandomImage() : removeRandomImage()
-    } else if (visibleImages.length > 2 && visibleImages.length < 6) {
+      Math.random() > 0.3 ? addRandomImage() : removeRandomImage()
+    } else if (visibleImages.length > 2 && visibleImages.length < 5) {
       Math.random() > 0.8 ? addRandomImage() : removeRandomImage()
     } else {
       removeRandomImage()
@@ -319,7 +319,7 @@ const Home = () => {
   const addRandomImage = () => {
     let newIndex
     do {
-      newIndex = Math.floor(Math.random() * 14)
+      newIndex = Math.floor(Math.random() * 26)
     } while (visibleImages.includes(newIndex))
     const newImages = [...visibleImages, newIndex]
     console.log("adding", visibleImages, newIndex, newImages)
@@ -335,14 +335,16 @@ const Home = () => {
 
   return <div>
     <div class="deeper">
-      <h1><a href="index.html" title="Get me out of here!">Richard Hughes</a></h1>
-      <h2>Equal Divisons of the Octave Synth [beta]</h2>
+      
+      <h1>EDO NET</h1>
+      <h2><a href="index.html" title="Get me out of here!">Richard Hughes</a></h2>
     </div>
     <ul>
       <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
       <li>You can MIDI map your own deivce to the sliders and the map will be stored locally.</li>
       <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>
-      <li>[A series of graphics will appear for you to musically interpret using the synth.]</li>
+      <li>Click the start button below to begin the series of graphics which you are to musically interpret.</li>
+      <li>The series lasts about 6 minutes.</li>
     </ul>
     <ul id="acknowledge">
       Thanks to <a href="https://rory.ie" target="_blank">Rory Hughes</a> for help with coding<br/>&<br/>
@@ -408,7 +410,7 @@ const Home = () => {
         {/* visible: {JSON.stringify(visibleImages)} iteration: {JSON.stringify(slideshowIteration)} */}
 
         <SlideshowContainer>
-          {[...Array(14).keys()].map(n =>
+          {[...Array(26).keys()].map(n =>
             <SlideshowImage key={n} visible={visibleImages.includes(n)} src={`edographics/${n}.png`} />
           )}
 

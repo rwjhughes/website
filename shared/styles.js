@@ -10,14 +10,14 @@ export const SlideshowImage = styled.img`
   top: 0;
   left: 0;
   opacity: ${props => props.visible ? 1 : 0};
-  transition: opacity 10s;
+  transition: opacity 12s;
   width: 100%;
 `
 
 export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
-  padding-bottom: 80px;
+  padding-bottom: 120px;
 `
 
 export const FlexGrow = styled.div`
