@@ -335,7 +335,7 @@ const Home = () => {
 
   return <div>
     <div class="deeper">
-      
+    <title>EDO NET</title>
       <h1>EDO NET</h1>
       <h2><a href="index.html" title="Get me out of here!">Richard Hughes</a></h2>
     </div>
