@@ -149,6 +149,11 @@ button:hover{
   overflow: hidden;
 }
 
+input{
+  position: relative;
+  left: 48%;
+}
+
 .note {
   height: 100%;
   width: 80px;
