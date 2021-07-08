@@ -265,90 +265,19 @@ const Home = () => {
     }
   }, [notes, audioDevices])
 
-
-
-  useEffect(() => {
-    // 0 means dont continue
-    if (slideshowIteration === 0) { return }
-
-    // if we have and ending time and it is or past ending time
-    if (slideshowEndMs && new Date().getTime() >= slideshowEndMs) {
-      console.log("autoend")
-      setSlideshowEndMs(undefined)
-      setVisibleImages([])
-      setSlideshowIteration(0)
-      return
-    }
-
-    progressSlideshow()
-
-    const secondsUntilNext = Math.floor(Math.random() * 10) +15 //between 10-25s
-    console.log("setupnext", secondsUntilNext)
-    setTimeout(() => {
-      setSlideshowIteration(slideshowIteration + 1)
-    }, secondsUntilNext*1000)
-  }, [slideshowIteration])
-
-
-  const toggleSlideshow = () => {
-    // if we have a slideshowEndMs (i.e. we already started)
-    if (slideshowEndMs) {
-      // end it
-      setSlideshowIteration(0)
-      setSlideshowEndMs(undefined)
-      setVisibleImages([])
-    } else {
-      // start it: set the ending time and set iteration = 1
-      setSlideshowEndMs(new Date().getTime() + 360000) // TODO 360000
-      setSlideshowIteration(1)
-    }
-  }
-
-  const progressSlideshow = () => {
-    if (visibleImages.length < 2) {
-      addRandomImage()
-    } else if (visibleImages.length === 2) {
-      Math.random() > 0.3 ? addRandomImage() : removeRandomImage()
-    } else if (visibleImages.length > 2 && visibleImages.length < 5) {
-      Math.random() > 0.8 ? addRandomImage() : removeRandomImage()
-    } else {
-      removeRandomImage()
-    }
-  }
-
-  const addRandomImage = () => {
-    let newIndex
-    do {
-      newIndex = Math.floor(Math.random() * 26)
-    } while (visibleImages.includes(newIndex))
-    const newImages = [...visibleImages, newIndex]
-    console.log("adding", visibleImages, newIndex, newImages)
-    setVisibleImages(newImages)
-  }
-
-  const removeRandomImage = () => {
-    const indexToRemove = Math.floor(Math.random() * visibleImages.length)
-    const newImages = [...visibleImages.slice(0, indexToRemove), ...visibleImages.slice(indexToRemove+1, visibleImages.length)]
-    console.log("removing", visibleImages, "index", indexToRemove, newImages)
-    setVisibleImages(newImages)
-  }
-
   return <div>
     <div class="deeper">
-    <title>EDO NET</title>
-      <h1>EDO NET</h1>
+    <title>EDO SYNTH</title>
+      <h1>EDO SYNTH [beta]</h1>
       <h2><a href="index.html" title="Get me out of here!">Richard Hughes</a></h2>
     </div>
     <ul>
       <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
       <li>You can MIDI map your own deivce to the sliders and the map will be stored locally.</li>
-      <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>
-      <li>Click the start button below to begin the series of graphics which you are to musically interpret.</li>
-      <li>The series lasts about 6 minutes.</li>
+      <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>11
     </ul>
     <ul id="acknowledge">
-      Thanks to <a href="https://rory.ie" target="_blank">Rory Hughes</a> for help with coding<br/>&<br/>
-      <a href="http://evangelineallize.com/" target="_blank">Evangéline Durand-Allizé</a> & <a href="https://www.instagram.com/vivienjunebruschi/" target="_blank">Viven Bruschi</a> for the graphics
+      Thanks to <a href="https://rory.ie" target="_blank">Rory Hughes</a> for help with coding<br/>
     </ul>
 
     <FlexRow>
@@ -405,40 +334,30 @@ const Home = () => {
         </div>
       </div>
       <FlexGrow>
-        <button id="begin" onClick={() => toggleSlideshow()}>{slideshowEndMs ? 'stop' : 'start'}</button>
+          <div id='container'>
+          {notes.map((note, i) => {
+            return <div
+              key={note}
+              className="note"
+              onMouseDown={() => audioDevices.synth.triggerAttack(note)}
+              onMouseUp={() => audioDevices.synth.triggerRelease()}
+              onMouseLeave={() => audioDevices.synth.triggerRelease()}
+              // onMouseEnter={() => audioDevices.synth.triggerAttack(note)}
+            >
+              <span>
+                {layoutMap.get(keyboardCodes[i])}
+                {/* {note.toFixed(3)} */}
+              </span>
+            </div>
+          })}
 
-        {/* visible: {JSON.stringify(visibleImages)} iteration: {JSON.stringify(slideshowIteration)} */}
-
-        <SlideshowContainer>
-          {[...Array(26).keys()].map(n =>
-            <SlideshowImage key={n} visible={visibleImages.includes(n)} src={`edographics/${n}.png`} />
-          )}
-
-        </SlideshowContainer>
-
+        </div>
       </FlexGrow>
     </FlexRow>
     
 
 
-    <div id='container'>
-      {notes.map((note, i) => {
-        return <div
-          key={note}
-          className="note"
-          onMouseDown={() => audioDevices.synth.triggerAttack(note)}
-          onMouseUp={() => audioDevices.synth.triggerRelease()}
-          onMouseLeave={() => audioDevices.synth.triggerRelease()}
-          // onMouseEnter={() => audioDevices.synth.triggerAttack(note)}
-        >
-          <span>
-            {layoutMap.get(keyboardCodes[i])}
-            {/* {note.toFixed(3)} */}
-          </span>
-        </div>
-      })}
-
-    </div>
+    
 
     <footer>&copy; Richard Hughes 2021</footer>
 

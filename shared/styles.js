@@ -21,9 +21,10 @@ export const FlexRow = styled.div`
 `
 
 export const FlexGrow = styled.div`
-  text-align: center;
+  text-align: right;
   flex-grow: 1;
   padding: 20px;
+  max-width: 66%;
 `
 
 
