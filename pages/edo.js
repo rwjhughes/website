@@ -129,7 +129,7 @@ const parameters = {
   },
 }
 
-const Slider = ({ label, displayValue, input, setInput, midiInput, changeParameter }) => {
+const MidiSlider = ({ label, displayValue, input, setInput, midiInput, changeParameter }) => {
   return <div>
     <p>{label}</p>
     <span>{displayValue}</span>
@@ -284,10 +284,43 @@ const Home = () => {
       <div>
         <form name="edo-cal">
           <span><i> f</i><sub>0</sub> (Hz)</span>
-          <input name="f0" id="f0" type="text" placeholder="e.g 110" size="10" required onChange={e => setF0(Number(e.target.value))} />
+          <input 
+            name="f0" 
+            id="f0" 
+            type="text" 
+            placeholder="e.g 110" 
+            size="10"
+            required
+            value={f0} 
+            onChange={e => setF0(Number(e.target.value))}
+          />
+          <input 
+            type="range" 
+            min="1" 
+            max="10000" 
+            value={f0} 
+            className="slider" 
+            onChange={e => setF0(Number(e.target.value))}
+          />
 
           <span>divisions</span>  
-          <input name="divisions" type="text" placeholder="max: 24" size="10" required onChange={e => setDivisions(Number(e.target.value))} />
+          <input 
+            name="divisions" 
+            type="text" 
+            placeholder="max: 24" 
+            size="10"
+            required
+            value={divisions} 
+            onChange={e => setDivisions(Number(e.target.value))}
+          />
+          <input 
+            type="range" 
+            min="1" 
+            max="24" 
+            value={divisions} 
+            className="slider" 
+            onChange={e => setDivisions(Number(e.target.value))}
+          />
 
           {invalidNumbers && <p id="invalid">enter a valid number in both boxes</p>}
         </form><br/>
@@ -319,7 +352,7 @@ const Home = () => {
             }
 
             const displayValue = round ? Math.round(scaled) : scaled.toFixed(2)
-            return <Slider
+            return <MidiSlider
               key={name}
               label={label}
               displayValue={displayValue}
