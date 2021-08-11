@@ -17,3 +17,6 @@ git commit -am "add a thing"
 
 push the change to github
 git push
+
+
+rory says hi
