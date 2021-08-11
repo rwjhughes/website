@@ -141,10 +141,11 @@ const MidiSlider = ({ label, displayValue, input, setInput, midiInput, changePar
 
 
 const Home = () => {
+  const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window
   const midiRef = useRef(null)
 
-  const [f0, setF0] = useState()
-  const [divisions, setDivisions] = useState()
+  const [f0, setF0] = useState(7)
+  const [divisions, setDivisions] = useState(7)
 
   const [audioDevices, setAudioDevices] = useState(null)
   const [paramValues, setParamValues] = useState({
@@ -368,14 +369,15 @@ const Home = () => {
       </div>
       <FlexGrow>
           <div id='container'>
-          {notes.map((note, i) => {
+          {layoutMap && notes.map((note, i) => {
             return <div
               key={note}
               className="note"
-              onMouseDown={() => audioDevices.synth.triggerAttack(note)}
-              onMouseUp={() => audioDevices.synth.triggerRelease()}
-              onMouseLeave={() => audioDevices.synth.triggerRelease()}
-              // onMouseEnter={() => audioDevices.synth.triggerAttack(note)}
+              onMouseDown={!isTouchDevice ? () => audioDevices.synth.triggerAttack(note) : undefined}
+              onTouchStart={isTouchDevice ? () => audioDevices.synth.triggerAttack(note) : undefined}
+              onMouseUp={!isTouchDevice ? () => audioDevices.synth.triggerRelease() : undefined}
+              onTouchEnd={isTouchDevice ? () => audioDevices.synth.triggerAttack() : undefined}
+              onMouseLeave={!isTouchDevice ? () => audioDevices.synth.triggerRelease() : undefined}
             >
               <span>
                 {layoutMap.get(keyboardCodes[i])}
