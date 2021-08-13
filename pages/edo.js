@@ -150,18 +150,18 @@ const Home = () => {
   const isTouchDevice = typeof window !== 'undefined' && 'ontouchstart' in window
   const midiRef = useRef(null)
 
-  const [f0, setF0] = useState(7)
+  const [f0, setF0] = useState(110)
   const [divisions, setDivisions] = useState(Math.round(Math.random()*24))
 
   const [audioDevices, setAudioDevices] = useState(null)
   const [paramValues, setParamValues] = useState({
-    attack: Math.random()*127,
+    attack: Math.random()*60,
     release: Math.random()*127,
-    modulation: Math.random()*127,
+    modulation: Math.random()*60,
     reverb: Math.random()*127,
     feedback: Math.random()*127,
     time: Math.random()*127,
-    lowpass: Math.random()*122+5,
+    lowpass: Math.random()*120+7,
     gain: 101,
     // attack: Math.random()*127,
     // release: 50,
