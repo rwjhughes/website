@@ -62,6 +62,12 @@ const makeSynth = () => {
   }
 }
 
+// const f0 = {
+//   f0: {
+//     mapping: input => (Math.exp(input * 0.00049517)
+//   }
+// }
+
 const parameters = {
   attack: {
     label: "attack (s)",
@@ -145,7 +151,7 @@ const Home = () => {
   const midiRef = useRef(null)
 
   const [f0, setF0] = useState(7)
-  const [divisions, setDivisions] = useState(7)
+  const [divisions, setDivisions] = useState(Math.round(Math.random()*24))
 
   const [audioDevices, setAudioDevices] = useState(null)
   const [paramValues, setParamValues] = useState({
@@ -275,7 +281,7 @@ const Home = () => {
     <ul>
       <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
       <li>You can MIDI map your own deivce to the sliders and the map will be stored locally.</li>
-      <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>11
+      <li>The keys are assigned to your computer keyboard, from top left to bottom right.</li>
     </ul>
     <ul id="acknowledge">
       Thanks to <a href="https://rory.ie" target="_blank">Rory Hughes</a> for help with coding<br/>
@@ -298,7 +304,7 @@ const Home = () => {
           <input 
             type="range" 
             min="1" 
-            max="10000" 
+            max="1000" 
             value={f0} 
             className="slider" 
             onChange={e => setF0(Number(e.target.value))}
