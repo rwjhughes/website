@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+  <title>RH - Crash Works</title>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-43126621-2');
+  </script>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
+
+</head>
+
+<body>
+  <style media="screen">
+
+  </style>
+
+  <div id="video-modal"></div>
+
+  <div class="a">
+  <h1 style="margin-bottom: 50px;"><a  href="index.html" title="Back to the start">Richard Hughes</a></h1>
+  <!-- <h4> <a href="projects.html">Projects</a> &middot <a href="concerts.html">Concerts</a></h4> -->
+  </div>
+
+  <div class="video-images">
+
+    <div style="border-top: 5px dotted; margin-bottom: 50px;">
+      <!--North Atlantic-->
+      <h2>North Atlantic</h2>
+      <h3>performed by MAZE Ensemble</h3>
+      <div style="position: relative; text-align: left; z-index: -99;">
+      <p>North Atlantic is a multimedia work written for MAZE ensemble. All the material of the piece is based off the wind forecast over the North Atlantic 
+        on the week of performance. In particular, the material includes the video graphic score the performers use, the fixed media electronics and abstracted 
+        visuals projected behind.</p>
+
+        <p>The performers are given fixed pitches which they can use freely. The pitches come from the 5edo scale. Instead of dividing the octave into 12 notes, 
+            it is divided into 5, which results in a microtonal scale.</p>
+        
+        <p>Each performer is placed within an area of the North Atlantic. The colour and strength of the wind, in their area, is mapped to a palette of techniques 
+            and textures. They are also instructed to interact in certain ways when performers share the same bout of wind.</p>
+        </div>
+        <img style="cursor: pointer;" data-yt-url="https://www.youtube.com/embed/luVI-ExWwBU" title="North Atlantic, performed by MAZE"src="maze.png" width=40%>
+
+      <br>
+      <iframe style="margin-bottom: 50px;" src="https://drive.google.com/file/d/1UCgw1eajZvjCCVluBSldGGKx5q-bCFeK/preview" width="66%" height="600" allow="autoplay"></iframe>
+    </div>
+
+    <div style="border-top: 5px dotted;">
+    <!--Focail-->
+    <h2>Focail</h2>
+    <h3>initial idea for multimedia work</h3>
+    <div style="position: relative; text-align: left; z-index: -99;">
+        <p>"</p><p>It is more than possible that the experience of the uncanny is radically underestimated for non-native speakers of Irish.</p>
+        <p>For many, who have been born and grown up in Anglophone Ireland, the language can have a certain familiarity about it but, at the same time, remain disconcertingly strange.</p>
+        <p>This sensation of being unsettled, of being in an uncertain, ambiguous space (the endless soul-searching about Irish identity) can, of course lead to resentful guilt or outright rejection.</p>
+        <p>An ecological ethics based on appreciating, tolerating and accepting strangeness is, in many respects, a more realistic and more useful approach to 
+        Irish-language learning for the majority population in Ireland than the older nationalist trope of sudden, effortless conversion</p>
+        <p>What is more, the necessary humility faced with the unfamiliar becomes an ecological virtue as we lunlearn many of the prejudices we 
+        had about the environment and come to a new understanding of it through the uncanny, long-term perspective of the language.</p>
+        <p>Irish forces us to look at our surroundings anew and it is precisely the need to be jolted out of our complacency which becomes a pressing necessity in the midst of a climate crises.</p>
+        <p>" <i>An Ghaeilge agus an &Eacuteiceola&iacuteocht</i> - Michael Cronin (2019)</p>
+    </div>
+      <img style="cursor: pointer;" data-yt-url="https://www.youtube.com/embed/QQzlzG3_Xzs" title="Focail [sketch]"src="focail.png" width=40%>
+
+      <div style="position: relative; text-align: left; z-index: -99;">
+        <p>~57,000 audio files were web-scraped from <a href="http://teanglann.ie" target="_blank">teanglann.ie</a></p>
+        <p>A max patch was made to scroll through the words randomly, controlling the sample size, speed and starting position.</p>
+    </div>
+</div>
+  <script>
+    var videoModal = document.getElementById("video-modal")
+    videoModal.onclick = (e) => {
+      videoModal.classList.remove("showing")
+      while (videoModal.firstChild) {
+        videoModal.removeChild(videoModal.firstChild);
+      }
+    }
+
+    document.querySelectorAll(".video-images img").forEach((img) => {
+      img.onclick = (e) => {
+        var iframe = document.createElement("iframe");
+        iframe.width = 960;
+        iframe.height = 540;
+        iframe.src = img.getAttribute("data-yt-url");
+        videoModal.appendChild(iframe);
+        videoModal.classList.add("showing")
+      }
+    })
+  </script>
+<footer>&copy Richard Hughes 2021</footer>
+</body>
+</html>
