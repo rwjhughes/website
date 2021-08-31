@@ -1,5 +1,5 @@
 import { globalStyles } from '../shared/styles'
-import '../shared/edo_style.css'
+import '../shared/edosynth_style.css'
 
 const App = ({ Component, pageProps }) => (
   <>
