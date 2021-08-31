@@ -197,7 +197,7 @@ const Home = () => {
     reverb: Math.random()*127,
     feedback: Math.random()*127,
     time: Math.random()*127,
-    lowpass: Math.random()*120+7,
+    lowpass: Math.random()*100+27,
     gain: 101,
   })
   const [changingParameter, setChangingParameter] = useState()
@@ -429,7 +429,7 @@ const Home = () => {
               onMouseDown={!isTouchDevice ? () => audioDevices.synth.triggerAttack(note) : undefined}
               onTouchStart={isTouchDevice ? () => audioDevices.synth.triggerAttack(note) : undefined}
               onMouseUp={!isTouchDevice ? () => audioDevices.synth.triggerRelease() : undefined}
-              onTouchEnd={isTouchDevice ? () => audioDevices.synth.triggerAttack() : undefined}
+              onTouchEnd={isTouchDevice ? () => audioDevices.synth.triggerRelease() : undefined}
               onMouseLeave={!isTouchDevice ? () => audioDevices.synth.triggerRelease() : undefined}
             >
               <span>
