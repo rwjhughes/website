@@ -1,1 +1,0 @@
-self.__BUILD_MANIFEST={__rewrites:{beforeFiles:[],afterFiles:[],fallback:[]},"/_error":["static/chunks/pages/_error-737a04e9a0da63c9d162.js"],"/edo":["static/chunks/54-9ce4ae25145e4628e7cd.js","static/chunks/pages/edo-5e80a9d0a53f62c69fe3.js"],sortedPages:["/_app","/_error","/edo"]},self.__BUILD_MANIFEST_CB&&self.__BUILD_MANIFEST_CB();
