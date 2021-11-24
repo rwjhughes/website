@@ -3,6 +3,8 @@ html, body {
   margin: 0;
   margin-left: 2em;
   margin-right: 2em;
+  background: black;
+  color: white;
 }
 
 /* latin */
@@ -41,6 +43,7 @@ footer{
 
 h1, h2, h3, h4 {
   font-weight: normal;
+  color: white;
 }
 
 h1 {
@@ -50,24 +53,25 @@ h1 {
 h1 a
 {
 text-decoration: none;
-color:black;
 font-weight: regular;
+color: white;
+transition: text-shadow 0.5s ease;
 /* background-color: white; */
 }
 h1 a:hover
 {
-  color: #BEBEBE
+  color: #BEBEBE;
+  text-shadow: 18px 18px 4px red, -18px 18px 4px green, 0px -18px 4px blue;
 }
 h2
 {
 font-family: 'Cousine';
 text-decoration:none;
-color:black;
+color: white;
 }
 h2 a
 {
 text-decoration:none;
-color:black;
 /* background-color: white; */
 }
 h2 a:hover
@@ -77,7 +81,6 @@ h2 a:hover
 h3 a
 {
 text-decoration:none;
-color:black;
 background-color: white;
 }
 h3 a:hover
@@ -87,31 +90,28 @@ h3 a:hover
 h4 a
 {
 text-decoration:none;
-color:black;
+color: white;
 }
 h4 a:hover
 {
-  color: #666666
+  color: #c2c2c2;
 }
 
 p
 {
 text-decoration:none;
-color:black;
 font-family: 'Cousine';
 }
 p a
 {
 text-decoration:none;
-color:black;
 }
 
   div.a {
     font-family: 'Cousine';
     text-align: center;
     text-decoration: none;
-    color: black;
-
+    color: white;
   }
 
   div.b {
@@ -127,22 +127,24 @@ color:black;
   f.a {
     font-size: 130%;
     text-decoration: none;
+    color: white;
     font-family: 'Cousine';
   /*  background-color: white; */
   }
 
-  a.pon {
+  .pon {
     opacity: .4;
     text-decoration:none;
     color: #D193EE;
     position: absolute;
     bottom: 25%;
     left: 10%;
+    transition: text-shadow 0.5s ease;
   }
 
-  a.pon:hover{
-    opacity: .9;
-    text-shadow: 2px 1px 3px #BCC2F1;
+  .pon:hover{
+    opacity: 0.8;
+    text-shadow: 20px 20px 2px #C1FFD7, -20px 20px 2px #B5DEFF, 0px -20px 2px #CAB8FF;
   }
 
   .social-link {
@@ -171,13 +173,54 @@ color:black;
     text-align: center;
     padding-top: 150px;
     margin-bottom: 200px;
-
   }
 
   .gap
    {
      padding: 20px 50px;
-     color: #666666;
+     color: #b6b6b6;
+   }
+
+   .gap:hover{
+     color: #b6b6b69f;
+   }
+
+   .music{
+    transition: text-shadow 0.5s ease;
+   }
+   .mhead{
+    transition: text-shadow 0.5s ease;
+   }
+   .projects{
+    transition: text-shadow 0.5s ease;
+   }
+   .phead{
+    transition: text-shadow 0.5s ease;
+   }
+   .concerts{
+    transition: text-shadow 0.5s ease;
+   }
+   .chead{
+    transition: text-shadow 0.5s ease;
+   }
+
+   .music:hover {
+    text-shadow: 56px 48px 2px #323dda, -56px 48px 2px #32C1CD, 0px -48px 2px #17D7A0;
+   }
+   .mhead:hover {
+    text-shadow: 15px 15px 2px #323dda, -15px 15px 2px #32C1CD, 0px -15px 2px #17D7A0;
+   }
+   .projects:hover {
+    text-shadow: 56px 48px 2px #FFC074, -56px 48px 2px #B6C867, 0px -48px 2px #01937C;
+   }
+   .phead:hover {
+    text-shadow: 15px 15px 2px #FFC074, -15px 15px 2px #B6C867, 0px -15px 2px #01937C;
+   }
+   .concerts:hover {
+    text-shadow: 56px 48px 2px #7027A0, -56px 48px 2px #C32BAD, 0px -48px 2px #F56FAD;
+   }
+   .chead:hover {
+    text-shadow: 15px 15px 2px #7027A0, -15px 15px 2px #C32BAD, 0px -15px 2px #F56FAD;
    }
 
    .bottomright {
@@ -204,6 +247,8 @@ color:black;
   text-decoration: none;
   color: white;
   background-color: green;
+  border: 2px solid #12581f;
+  border-radius: 5px;
 }
 
 .ga:hover {
@@ -218,6 +263,8 @@ color:black;
   text-decoration: none;
   color: white;
   background-color: #1187AB;
+  border: 2px solid #093d81;
+  border-radius: 5px;
 }
 
 .en:hover {
@@ -264,7 +311,7 @@ table#scores td a {
 .deeper h1, h2, h3, h4{
   font-family: Cousine;
   text-decoration: none;
-  color:black;
+  /* color:black; */
   font-weight: regular;
   text-align: center;
 }
@@ -294,10 +341,11 @@ th{
 
 td a, th a {
   text-decoration: none;
-  color: black;
+  color: #aa8db6;
 }
 td a:hover {
-  color: #666666;
+  color: white;
+  text-shadow: 2px 1px 3px #a434d4;
 }
 .video-images
 {
@@ -327,7 +375,7 @@ td a:hover {
 }
 
 .shadow-header {
-  text-shadow: 2px 1px 3px white;
+  text-shadow: 2px 1px 2px white;
 }
 
 .focal{
