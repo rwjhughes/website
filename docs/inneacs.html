@@ -16,7 +16,7 @@
       gtag('config', 'UA-43126621-2');
     </script>
     <link rel="stylesheet" type="text/css" href="style.css"/>
-
+    <script src="https://tonejs.github.io/build/Tone.js"></script>
   </head>
 
   <body>
@@ -41,18 +41,23 @@
       -->
         <a class="social-link" style="color:white;  background:#00B5B8"
         href=mailto:richard@hughes.ie target="_top">r-phost</a>
-
       </p>
 
-<h1>
+      <div style="position:relative; left: 2%; top: 1%; opacity:0.5">
+        <img style="position:absolute; top:0; left:0;" src="speaker.png" type="png" height="30px"/>
+        <a id="audio"><img style="position:absolute; top:0; left:0;" id="cross" src="cross.png" height="30px"/></a>
+      </div>
 
+<h1>
     <div class="list">
-      <a class="gap music" href="ceol.html">Ceol</a>
+      <a class="gap music" id="music" href="ceol.html">Ceol</a>
       <!-- <a class="gap" href="scoir.html">Sc&oacuteir</a> -->
-      <a class="gap projects" href="tionscadail.html">Tionscadail</a>
-      <a class="gap concerts" href="ceolchoirmeacha.html">Ceolchoirmeacha</a>
+      <a class="gap projects" id="projects" href="tionscadail.html">Tionscadail</a>
+      <a class="gap concerts" id="concerts" href="ceolchoirmeacha.html">Ceolchoirmeacha</a>
+    </div>
 </h1>
-<a class="pon"  href="domhain.html">
+
+<a class="pon" id="pon" href="domhain.html">
   t&oacutegaim n&iacuteos doimhne</a>
 </div>
 </div>
@@ -67,5 +72,5 @@
 
   <footer>&copy Richard Hughes 2021</footer> </div> <!-- style="padding-top:25em" -->
   </body>
-
+  <script src="synth.js"></script>
 </html>
