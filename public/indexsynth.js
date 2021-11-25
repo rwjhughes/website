@@ -52,18 +52,13 @@ const synth = new Tone.FMSynth({
 
 const now = Tone.now();
 const timer = ms => new Promise(res => setTimeout(res, ms));
-let audioOn = 0;
   
   document.getElementById("audio").addEventListener("click", async () => {
     await Tone.start();
-    document.getElementById("audio").style.opacity = 0;
-    console.log('audio is ready')
-    audioOn = 1;
+    // document.getElementById("audio").style.opacity = 0;
+    console.log('audio is ready');
+    // console.log(Tone.start().PromiseState());
   });
-
-  if (audioOn == 1){
-    document.getElementById("audio").style.opacity = 0;
-  }
 
   for (let i=0; i < 5; i++){
     document.getElementById(i).addEventListener("mouseenter", async () => {
