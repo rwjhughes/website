@@ -1,9 +1,9 @@
 //TONE.JS SYNTH//
 
-
 //effects chain
 const inmix = new Tone.Gain(0.8);
 const outmix = new Tone.Gain(0.8);
+const panner = new Tone.Panner(0);
 const reverb = new Tone.Reverb({
       wet: .5,
       decay: 20,
@@ -16,9 +16,10 @@ const delay = new Tone.PingPongDelay({
 const lowpass = new Tone.Filter(3000, "lowpass");
 const highpass = new Tone.Filter(150, "highpass");
 const stereo = new Tone.StereoWidener(0.66);
-  // inmix => reverb => delay
+  // inmix => panner => reverb => delay
   // => lowpass filter => highpass filter => stereo width => outmix
-  inmix.connect(reverb);
+  inmix.connect(panner);
+  panner.connect(reverb);
   reverb.connect(delay);
   delay.connect(lowpass);
   lowpass.connect(highpass);
@@ -50,12 +51,32 @@ const synth = new Tone.FMSynth({
 }).connect(inmix);
 
 const now = Tone.now();
+const timer = ms => new Promise(res => setTimeout(res, ms));
+let audioOn = 0;
   
   document.getElementById("audio").addEventListener("click", async () => {
     await Tone.start();
     document.getElementById("audio").style.opacity = 0;
     console.log('audio is ready')
+    audioOn = 1;
   });
+
+  if (audioOn == 1){
+    document.getElementById("audio").style.opacity = 0;
+  }
+
+  for (let i=0; i < 5; i++){
+    document.getElementById(i).addEventListener("mouseenter", async () => {
+      synth.oscillator.type = 'triangle';
+      lowpass.frequency.value = 3000;
+      panner.pan.value = 0.5*i - 1;
+      synth.triggerAttackRelease(Math.pow(1.5,i)*140, 0.1);
+    });
+    document.getElementById(i).addEventListener("mouseleave", async () => {
+      await timer(100);
+      panner.pan.value = 0;
+    });
+  }
   
   document.getElementById("music").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'sine';
