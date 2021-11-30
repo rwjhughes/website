@@ -184,24 +184,27 @@ text-decoration:none;
     flex-wrap: wrap;
   }
 
-  @media screen and (max-width: 575px) {
-    .list {
-      flex-direction: column;
-      font-size: 300%;
-    }
-  }
-
   .gap
    {
      padding: 20px;
-     color: #a1a1a1;
-     -webkit-text-stroke: 1px rgb(102, 101, 101);
+     color: #838383;
+     -webkit-text-stroke: 1px rgb(71, 71, 71);
     }
 
    .gap:hover{
      color: #b6b6b69f;
      -webkit-text-stroke: 1px rgb(141, 141, 141);
    }
+
+   @media screen and (max-device-width: 480px) {
+    html {
+      font-size: 150%;
+    }
+    .list {
+      flex-direction: column;
+      font-size: 200%;
+    }
+  }
 
    .music{
     transition: text-shadow 0.5s ease;
