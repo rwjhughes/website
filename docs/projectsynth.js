@@ -74,6 +74,11 @@ const f = 80;
     synth.triggerAttackRelease(280, 0.5);
   });
 
+  document.getElementById("projects").addEventListener("mouseenter", async () => {
+    delay.wet.value = 0.8;
+    synth.triggerAttackRelease(243.75, 0.5);
+  });
+
   document.getElementById("index").addEventListener("mouseenter", async () => {
     delay.wet.value = 0.9;
     synth.triggerAttackRelease(321.64, 0.5);

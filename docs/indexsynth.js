@@ -1,17 +1,16 @@
 //TONE.JS SYNTH//
-
 //effects chain
 const inmix = new Tone.Gain(0.8);
 const outmix = new Tone.Gain(0.8);
 const panner = new Tone.Panner(0);
 const reverb = new Tone.Reverb({
-      wet: .5,
-      decay: 20,
+      wet: .33,
+      decay: 15,
     });
 const delay = new Tone.PingPongDelay({
       time: 0.1,
       feedback: 0.5,
-      wet: 0.3,
+      wet: 0.25,
     });
 const lowpass = new Tone.Filter(3000, "lowpass");
 const highpass = new Tone.Filter(150, "highpass");
@@ -45,21 +44,61 @@ const synth = new Tone.FMSynth({
     attack: 0.2,
     decay: 0.1,
     sustain: .2,
-    release: 2,
+    release: 1.8,
     attackCurve: 'sine'
   }
 }).connect(inmix);
 
 const now = Tone.now();
 const timer = ms => new Promise(res => setTimeout(res, ms));
+
+// let Ascale = [0, 55, 63,18, 72.57, 83.36, 95.76, 110, 126.36, 145.15, 166.73, 191.52, 220];
+var notes =[];
+  
+motif = {
+    start: function(freq, n){
+    let notes0 = [];
+    let notes1 = [];
+    for (let i=0; i<n; i++){
+      // var pitch = scale[(Math.floor(Math.random()*scale.length))];
+      var pitch0 = freq*Math.pow(2,(Math.floor(Math.random()*10))/5)
+      notes0.push(pitch0);
+      // console.log(notes0);
+    };
+    for (let i=0; i<n/2; i++){
+      // var pitch = scale[(Math.floor(Math.random()*scale.length))];
+      var pitch1 = freq*Math.pow(2,(Math.floor(Math.random()*10))/5)
+      notes1.push(pitch1);
+      // console.log(notes1);
+    };
+    seq1 = new Tone.Sequence(function(time, note){
+      synth.triggerAttackRelease(note, 0.3);
+      // console.log(note);
+    }, [notes0,[,notes1],], 0.8);
+
+    seq2 = new Tone.Sequence(function(time, note){
+      synth.triggerAttackRelease(note, 0.3);
+      // console.log(note);
+    }, [[notes0,notes1],[notes1,notes0],,], 0.6);
+
+    seq3 = new Tone.Sequence(function(time, note){
+      synth.triggerAttackRelease(note, 0.3);
+      // console.log(note);
+    }, [[[notes0,notes1],notes0],notes1], 1.2);
+  
+   Tone.Transport.start();
+  }
+};
   
   document.getElementById("audio").addEventListener("click", async () => {
     await Tone.start();
-    // document.getElementById("audio").style.opacity = 0;
+    document.getElementById("speaker").style.opacity = 0.6;
     console.log('audio is ready');
     // console.log(Tone.start().PromiseState());
   });
 
+  
+  // social media links
   for (let i=0; i < 5; i++){
     document.getElementById(i).addEventListener("mouseenter", async () => {
       synth.oscillator.type = 'triangle';
@@ -73,10 +112,12 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
     });
   }
   
+  //title links
   document.getElementById("music").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'sine';
     lowpass.frequency.value = 3000;
-    seq1.start()
+    motif.start(110, 4);
+    seq1.start();
   });
   document.getElementById("music").addEventListener("mouseleave", async () => {
     lowpass.frequency.value = 500;
@@ -86,6 +127,7 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
   document.getElementById("projects").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'triangle';
     lowpass.frequency.value = 5000;
+    motif.start(180, 5);
     seq2.start()
   });
   document.getElementById("projects").addEventListener("mouseleave", async () => {
@@ -96,6 +138,7 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
   document.getElementById("concerts").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'sawtooth';
     lowpass.frequency.value = 1800;
+    motif.start(133, 4);
     seq3.start()
   });
   document.getElementById("concerts").addEventListener("mouseleave", async () => {
@@ -115,23 +158,23 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
     synth.envelope.sustain = 0.2;
   });
 
-  seq1 = new Tone.Sequence(function(time, note){
-    synth.triggerAttackRelease(note, 0.5);
-    // console.log(note);
-  }, [220, [333.46, 290.29], 383.04,,191.52,[,252.71]], 0.55);
+  // seq1 = new Tone.Sequence(function(time, note){
+  //   synth.triggerAttackRelease(note, 0.5);
+  //   // console.log(note);
+  // }, [220, [333.46, 290.29], 383.04,,191.52,[,252.71]], 0.55);
 
-  seq2 = new Tone.Sequence(function(time, note){
-    synth.triggerAttackRelease(note, 0.5);
-    // console.log(note);
-  }, [[184.73, 212.20, 243.75, 280],[212.20, 243.75, 280, 321.64],
-      [243.75, 280, 321.64, 369.46], [280, 321.64, 369.46, 424.4],
-      [321.64, 369.46, 424.4, 487.51], [369.46, 424.4, 487.51, 560],
-      [ 424.4, 487.51, 560, 643.27],,160.82,,], 0.45);
+  // seq2 = new Tone.Sequence(function(time, note){
+  //   synth.triggerAttackRelease(note, 0.66);
+  //   // console.log(note);
+  // }, [[184.73, 212.20, 243.75, 280],[212.20, 243.75, 280, 321.64],
+  //     [243.75, 280, 321.64, 369.46], [280, 321.64, 369.46, 424.4],
+  //     [321.64, 369.46, 424.4, 487.51], [369.46, 424.4, 487.51, 560],
+  //     [ 424.4, 487.51, 560, 643.27],,160.82,,], 0.45);
 
-  seq3 = new Tone.Sequence(function(time, note){
-    synth.triggerAttackRelease(note, 0.5);
-    // console.log(note);
-  }, [[891.44,776.05,675.59,588.13],[512,445.72,388.02],[337.79,294.07,256,222.86],[194.01,337.79],,388.02,,], 0.6);
+//   seq3 = new Tone.Sequence(function(time, note){
+//     synth.triggerAttackRelease(note, 0.55);
+//     // console.log(note);
+//   }, [[891.44,776.05,675.59,588.13],[512,445.72,388.02],[337.79,294.07,256,222.86],[194.01,337.79],,388.02,,], 0.6);
 
- Tone.Transport.start();
+//  Tone.Transport.start();
 
