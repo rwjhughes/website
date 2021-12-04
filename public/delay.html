@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="icon"
+    type="image/png"
+    href="icon.png" />
+<title>Delay</title>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-43126621-2');
+</script>
+
+<link rel="stylesheet" type="text/css" href="delay_style.css"/>
+<script src="https://tonejs.github.io/build/Tone.js"></script>
+</head>
+
+<body>
+<!-- <a href="tionscadail.html"><button class="ga">Gaeilge</button></a> -->
+
+<div class="a">  
+  <!-- <h1><a href="index.html" style="text-align: center;" id="index" title="Back to the start">Richard Hughes</a></h1> -->
+  <h2>delay channel</h2>
+</div>
+
+<div class="container">
+  <div></div>
+  <div id="delayControls" class="controls">
+      <span id="audio">click to allow audio</span>
+      <span>microphone: <button id="mic">on</button></span>
+      <!-- <span>delay time (s):</span> <input id="time" type="number" min="0.1" max="10" step="0.1" value="4.2" style="height: 20px; width: 50px"><br> -->
+      <span>input:
+          <div class="sliderContainer">
+           <input class="slider" id="input" type="range" min="0.0" max="0.9" step="0.01" value="0.8">
+           <progress id="inLevel" min="0" max="1" step="0.005" value="0">
+        </div>
+      </span>
+
+      <span>tempo (bpm): <input id="tempo" type="number" min="5" max="220" step="0.5" value="55"></span>
+      
+      <span>feedback: 
+        <input id="feedback" type="number" min="0.0" max="0.99" step="0.01" value="0.88" style="background: white;">
+        <button id="feedbackStop" value="0">0</button>
+      </span>
+      
+      <span>output: 
+        <div class="sliderContainer">
+          <input class="slider" id="output" type="range" min="0.0" max="0.9" step="0.01" value="0.8">
+          <progress id="outLevel" min="0" max="1" step="0.005" value="0">
+        </div>
+      </span>
+
+      <span>metronome: <button id="metStatus" onclick="metronomeStart()">start</button></span>
+      <span class="metronome">
+        <button class="ball" id="0"></button>
+        <button class="ball" id="1"></button>
+        <button class="ball" id="2"></button>
+        <button class="ball" id="3"></button>
+      </span>
+  </div>
+  <div></div>
+</div>
+<footer>&copy <a href="index.html">Richard Hughes</a> 2021</footer>
+</body>
+<script src="delay.js"></script>
+</html>

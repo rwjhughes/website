@@ -44,6 +44,7 @@ footer{
 h1, h2, h3, h4 {
   font-weight: normal;
   color: white;
+  font-family: Cousine;
 }
 
 h1 {
@@ -304,7 +305,7 @@ text-decoration:none;
   background-color: #B261E9;
 }
 
-input[type="text"] {
+input{
   font-family: 'Cousine';
 }
 
@@ -421,4 +422,8 @@ td a:hover {
   height: 40px;
   width: 33%;
   cursor: pointer;
+}
+
+span{
+  font-family: Cousine;
 }

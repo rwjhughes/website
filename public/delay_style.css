@@ -1,0 +1,204 @@
+html, body {
+    /* background-color: #CFCFCF; */
+    margin: 0;
+    /* margin-left: 2em;
+    margin-right: 2em; */
+    background: black;
+    color: white;
+    font-size: 150%;
+  }
+  
+  /* latin */
+  @font-face {
+    font-family: 'Cousine';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: local('Cousine Regular'), local('Cousine-Regular'), url(https://fonts.gstatic.com/s/cousine/v14/d6lIkaiiRdih4SpP_SQvzA.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  /* latin */
+  @font-face {
+    font-family: 'Cousine';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: local('Cousine Bold'), local('Cousine-Bold'), url(https://fonts.gstatic.com/s/cousine/v14/d6lNkaiiRdih4SpP9Z8K2TnM0g.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  
+  
+  title
+  {
+  text-decoration:none;
+  }
+  
+  footer{
+    font-family: 'Cousine';
+    text-align: Center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 66%;
+  }
+  
+  
+  h1, h2, h3, h4 {
+    font-weight: normal;
+    color: white;
+    font-family: Cousine;
+    margin: 0;
+    font-size: 130%;
+    padding-top: 15px;
+  }
+
+  a
+  {
+  text-decoration: none;
+  font-weight: normal;
+  color: white;
+  transition: text-shadow 0.5s ease;
+  /* background-color: white; */
+  }
+  a:hover
+  {
+    color: #BEBEBE;
+    text-shadow: 18px 18px 4px red, -18px 18px 4px green, 0px -18px 4px blue;
+  }
+
+  div.a {
+    font-family: 'Cousine';
+    text-align: center;
+    text-decoration: none;
+    color: white;
+  }
+
+  #audio:hover {
+    opacity: 0.8;
+  }
+
+  span{
+    font-family: Cousine;
+    margin: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  input{
+    font-family: Cousine;   
+  }
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-grow: 8;
+}
+
+.controls{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  button{
+    font-family: Cousine;
+    font-size: 66%;
+    border: none;
+    opacity: 0.9;
+    border-radius: 5px;
+    border-right: 1px solid #dad9d9;
+    border-top: 1px solid #dad9d9;
+    background: #F3F8F2; /* background */  
+}
+  /* Mouse-over effects */
+  button:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+
+  button:active {
+      opacity: 0.8;
+  }
+
+  input{
+      font-size: 75%;
+      max-width: 90px;
+      max-height: 50px;
+      border: none;
+      border-radius: 5px;
+      border-right: 2px solid #dad9d9;
+      border-top: 3px solid #dad9d9;
+      background: #F3F8F2; /* background */ 
+  }
+
+  input:active{
+      background: #989b97;
+  }
+
+  /* The slider itself */
+.slider {
+    -webkit-appearance: none;  /* Override default CSS styles */
+    appearance: none;
+    max-width: 550px; /* Full-width */
+    max-height: 18px; /* Specified height */
+    outline: none; /* Remove outline */
+    opacity: 0.85; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+  }
+  
+  /* Mouse-over effects */
+  .slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+  
+  /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 18px; /* Set a specific slider handle width */
+    height: 32px; /* Slider handle height */
+    border-radius: 18px;
+    border-right: 1px solid #3542b8;
+    border-top: 1px solid #3542b8;
+    background: #3581B8; /* background */
+    cursor: pointer; /* Cursor on hover */
+  }
+  
+  .slider::-webkit-slider-thumb:active{
+    background: #FCB07E;
+  }
+
+ .sliderContainer{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  progress {
+    -webkit-appearance: none;
+    appearance: none;
+    max-width: 250px;
+    height: 32px;
+    border-color: #dad9d9b9;
+    border-radius: 5px;
+    border-right: 2px solid #dad9d9;
+    border-top: 3px solid #dad9d9;
+  }
+  
+  ::-webkit-progress-value {
+    background: rgb(79, 168, 79);
+  }
+
+  .ball{
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+      border-top: 2px solid #dad9d9;
+      border-right: 1px solid #dad9d9;
+      /* background: red; */
+  }
+
+  .ball:hover{
+      opacity: 1;
+  }
+
