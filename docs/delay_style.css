@@ -36,8 +36,7 @@ html, body {
   footer{
     font-family: 'Cousine';
     text-align: Center;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 20px 0;
     font-size: 66%;
   }
   
@@ -76,15 +75,27 @@ html, body {
     opacity: 0.8;
   }
 
+  img {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    max-height: 1.5em;
+    }
+
+  .crochet{
+    display: flex;
+    max-height: 80px;
+    flex-grow: 0.3;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   span{
     font-family: Cousine;
-    margin: 20px;
+    margin: 15px 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
-  input{
-    font-family: Cousine;   
+    align-items: center;
   }
 
 .container{
@@ -120,9 +131,10 @@ html, body {
   }
 
   input{
+      font-family: Cousine;   
       font-size: 75%;
-      max-width: 90px;
-      max-height: 50px;
+      max-width: 180px;
+      max-height: 80px;
       border: none;
       border-radius: 5px;
       border-right: 2px solid #dad9d9;
@@ -177,7 +189,7 @@ html, body {
   progress {
     -webkit-appearance: none;
     appearance: none;
-    max-width: 250px;
+    max-width: 400px;
     height: 32px;
     border-color: #dad9d9b9;
     border-radius: 5px;
@@ -200,5 +212,36 @@ html, body {
 
   .ball:hover{
       opacity: 1;
+  }
+
+  @media screen and (max-device-width: 480px) {
+    html {
+      font-size: 350%;
+    }
+    .a{
+      padding-bottom: 30px;
+      font-size: 75%;
+    }
+    #audio{
+      font-size: 75%;
+    }
+    span{
+      margin: 50px 0;
+    }
+    .sliderContainer{
+      flex-grow: 0.1;
+    }
+    .slider{
+      max-height: 36px;
+      max-width: 400px;
+    }
+    .slider::-webkit-slider-thumb{
+      width: 30px;
+      height: 48px;
+    }
+    .ball{
+      width: 56px;
+      height: 56px;
+    }
   }
 
