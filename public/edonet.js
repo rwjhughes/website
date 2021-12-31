@@ -440,7 +440,7 @@ const Home = () => {
 
     </div>
 
-    <footer>&copy; Richard Hughes 2021</footer>
+    <footer>&copy; Richard Hughes 2022</footer>
 
   </div>
 
