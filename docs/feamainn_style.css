@@ -41,13 +41,18 @@ h3 a:hover{
     flex-flow: row wrap;
 }
 
-.scores{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    flex-flow: row wrap;
-}
-
 .a{
     font-size: 133%;
+}
+
+.cartai{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 30px
+}
+
+.cartai img{
+    max-width: 660px;
 }
