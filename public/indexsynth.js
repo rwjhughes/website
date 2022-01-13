@@ -47,7 +47,7 @@ const synth = new Tone.FMSynth({
     release: 1.8,
     attackCurve: 'sine'
   }
-}).connect(inmix);
+}).connect(inmix);    
 
 const now = Tone.now();
 const timer = ms => new Promise(res => setTimeout(res, ms));
@@ -56,9 +56,10 @@ const timer = ms => new Promise(res => setTimeout(res, ms));
 var notes =[];
   
 motif = {
-    start: function(freq, n){
+    start: function(n){
     let notes0 = [];
     let notes1 = [];
+    var freq = Math.random()*40+140;
     for (let i=0; i<n; i++){
       // var pitch = scale[(Math.floor(Math.random()*scale.length))];
       var pitch0 = freq*Math.pow(2,(Math.floor(Math.random()*10))/5)
@@ -85,6 +86,11 @@ motif = {
       synth.triggerAttackRelease(note, 0.3);
       // console.log(note);
     }, [[[notes0,notes1],notes0],notes1], 1.2);
+
+    seq4 = new Tone.Sequence(function(time, note){
+      synth.triggerAttackRelease(note, 0.3);
+      // console.log(note);
+    }, [[notes1,],notes0], 2);
   
    Tone.Transport.start();
   }
@@ -116,7 +122,7 @@ motif = {
   document.getElementById("music").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'sine';
     lowpass.frequency.value = 3000;
-    motif.start(110, 4);
+    motif.start(4);
     seq1.start();
   });
   document.getElementById("music").addEventListener("mouseleave", async () => {
@@ -127,7 +133,7 @@ motif = {
   document.getElementById("projects").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'triangle';
     lowpass.frequency.value = 5000;
-    motif.start(180, 5);
+    motif.start(5);
     seq2.start()
   });
   document.getElementById("projects").addEventListener("mouseleave", async () => {
@@ -138,12 +144,25 @@ motif = {
   document.getElementById("concerts").addEventListener("mouseenter", async () => {
     synth.oscillator.type = 'sawtooth';
     lowpass.frequency.value = 1800;
-    motif.start(133, 4);
+    var noteInit = Math.random()*10+150;
+    motif.start(4);
     seq3.start()
   });
   document.getElementById("concerts").addEventListener("mouseleave", async () => {
     lowpass.frequency.value = 500;
     seq3.stop()
+  });
+
+  document.getElementById("about").addEventListener("mouseenter", async () => {
+    synth.oscillator.type = 'triangle';
+    lowpass.frequency.value = 1800;
+    var noteInit = Math.random()*10+150;
+    motif.start(3.5);
+    seq4.start()
+  });
+  document.getElementById("about").addEventListener("mouseleave", async () => {
+    lowpass.frequency.value = 500;
+    seq4.stop()
   });
 
   document.getElementById("pon").addEventListener("mouseenter", async () => {

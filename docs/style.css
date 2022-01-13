@@ -1,8 +1,8 @@
 html, body {
   /* background-color: #CFCFCF; */
   margin: 0;
-  margin-left: 2em;
-  margin-right: 2em;
+  margin-left: 1%;
+  margin-right: 1%;
   background: black;
   color: white;
 }
@@ -167,44 +167,20 @@ text-decoration:none;
          background-image: url(foggy.png);
    }
 
-  /* .list{
-    text-decoration: none;
-    font-family: 'Cousine', monospace;
-    text-align: center;
-    padding-top: 150px;
-    margin-bottom: 200px;
-  } */
-
-  .list{
-    padding: 120px 100px;
-    display: flex;
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    justify-content: space-evenly;
-    font-size: 150%;
-    flex-wrap: wrap;
-  }
-
-  .gap
-   {
-     padding: 20px;
-     color: #838383;
-     -webkit-text-stroke: 1px rgb(71, 71, 71);
-    }
-
-   .gap:hover{
-     color: #b6b6b69f;
-     -webkit-text-stroke: 1px rgb(141, 141, 141);
-   }
-
    @media screen and (max-device-width: 480px) {
     html {
-      font-size: 150%;
+      font-size: 220%;
+      margin: 0;
     }
-    .list {
-      flex-direction: column;
-      font-size: 200%;
+    .pages{
+      padding: 0 !important;
+      margin: 0;
     }
+    .pages a{
+      width:800px;
+      word-break: break-word;
+    }
+
   }
 
    .music{
@@ -225,6 +201,12 @@ text-decoration:none;
    .chead{
     transition: text-shadow 0.5s ease;
    }
+   .about{
+    transition: text-shadow 0.5s ease;
+   }
+   .ahead{
+    transition: text-shadow 0.5s ease;
+   }
 
    .music:hover {
     text-shadow: 56px 48px 2px #323dda, -56px 48px 2px #32C1CD, 0px -48px 2px #17D7A0;
@@ -243,6 +225,30 @@ text-decoration:none;
    }
    .chead:hover {
     text-shadow: 15px 15px 2px #7027A0, -15px 15px 2px #C32BAD, 0px -15px 2px #F56FAD;
+   }
+   .about:hover {
+    text-shadow: 56px 48px 2px #647AA3, -56px 48px 2px #334195, 0px -48px 2px #020887;
+   }
+   .ahead:hover {
+    text-shadow: 15px 15px 2px #647AA3, -15px 15px 2px #334195, 0px -15px 2px #020887;
+   }
+
+   .pages{
+     font-size: 200%;
+     display: flex;
+     flex-direction: row;
+     flex-wrap: wrap;
+     justify-content: space-around;
+     padding: 0 19%;
+   }
+
+   .pages a{
+     padding: 0 12px;
+     padding-top: 55px;
+     color: rgb(62, 66, 117);
+     -webkit-text-stroke-width: 1px;
+     -webkit-text-stroke-color: rgb(120, 142, 146);
+     /* word-break: break-word; */
    }
 
    .bottomright {
@@ -426,4 +432,58 @@ td a:hover {
 
 span{
   font-family: Cousine;
+}
+
+.faoi{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.faoi a{
+  text-decoration: none;
+  color: white;
+}
+.faoi a:hover{
+  color:rgb(105, 50, 177);
+}
+
+.picMe{
+  max-height: 350px;
+}
+
+.one {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.0s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.0s;
+}
+
+.two {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.2s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.2s;
+}
+
+.three {
+  opacity: 0;
+  -webkit-animation: dot 1.3s infinite;
+  -webkit-animation-delay: 0.3s;
+  animation: dot 1.3s infinite;
+  animation-delay: 0.3s;
+}
+
+@-webkit-keyframes dot {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
