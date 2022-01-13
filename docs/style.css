@@ -243,7 +243,7 @@ text-decoration:none;
    }
 
    .pages a{
-     padding: 0 12px;
+     padding: 0 20px;
      padding-top: 55px;
      color: rgb(62, 66, 117);
      -webkit-text-stroke-width: 1px;
@@ -437,7 +437,8 @@ span{
 .faoi{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
 }
 
 .faoi a{
@@ -449,7 +450,7 @@ span{
 }
 
 .picMe{
-  max-height: 350px;
+  max-height: 100%;
 }
 
 .one {
