@@ -1,7 +1,7 @@
 //TONE.JS SYNTH//
 //effects chain
-const inmix = new Tone.Gain(0.8);
-const outmix = new Tone.Gain(0.6);
+const inmix = new Tone.Gain(0.9);
+const outmix = new Tone.Gain(0.9);
 const reverb = new Tone.Reverb({
       wet: .5,
       decay: 5,
