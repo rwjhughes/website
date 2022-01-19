@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="icon"
+      type="image/png"
+      href="icon.png" />
+    <title>Richard Hughes</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-43126621-2"></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-43126621-2');
+    </script>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+  </head>
+
+
+<body>
+    <link rel="stylesheet" type="text/css" href="feamainn_style.css"/>
+
+</head>
+
+<body>
+
+<div class="a">  
+    <h1>Data Is Ephemeral</h1>
+    <h2><a href="index.html" style="text-align: center; border: none;">Richard Hughes</a></h2>
+</div>
+
+<div class="container">
+    <h1>Scores</h1>
+    <div class="media">
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1RVDQTlwhOFxhWz7g2Z0q8zLyKwMMPMDf" target="_blank">
+                full score
+            </a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1TWS5zOOPcS94IQ69Z2MXTWa602HEKRud" target="_blank">
+                performance notes
+            </a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1RAZPqvJN1GYV9gva5l5ObeEvzWL6-nJt" target="_blank">clarinet in B&#x266d</a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1RJMfCCnV-H3s4u6rK9zUvu8tdq2ZQN47" target="_blank">alto saxophone</a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1R1BclCRI9_Wkawpvc9wiLydS6k0aSb0P" target="_blank">guitar</a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1Qps9i72qmXjt7MlkQLxDQstVFrGIRy6Y" target="_blank">cello</a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1RA2Hd6OntKuCWjERcyE_8I7pW1pKnNps" target="_blank">trombone</a></h3>
+        </div>
+        <div>
+            <h3><a href="https://drive.google.com/open?id=1Qudpz83Xs5tlMJmvIZis0Yz2yWggpLyD" target="_blank">harpsichord</a></h3>
+        </div>
+        <br>
+    </div>
+    <div id="video"></div>
+    <div class="video">
+        <h2><a vid_link="data_render_1901.mp4">example of live visuals</a></h2>
+    </div>
+</div>
+
+<script>
+    var videoModal = document.getElementById("video")
+    videoModal.onclick = (e) => {
+      videoModal.classList.remove("showing")
+      while (videoModal.firstChild) {
+        videoModal.removeChild(videoModal.firstChild);
+      }
+    }
+
+    document.querySelectorAll(".video a").forEach((a) => {
+      a.onclick = (e) => {
+        var iframe = document.createElement("iframe");
+        iframe.width = 960;
+        iframe.height = 540;
+        iframe.padding = 15% 0;
+        iframe.src = a.getAttribute("vid_link");
+        videoModal.appendChild(iframe);
+        videoModal.classList.add("showing")
+      }
+    })
+  </script>
+    <footer>&copy Richard Hughes 2022</footer>
+</body>
+</html>
