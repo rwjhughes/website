@@ -59,6 +59,10 @@ h3 a:hover{
     max-width: 660px;
 }
 
+.gif{
+    max-width: 35%;
+}
+
 #video {
     display: none;
     position: fixed;
@@ -67,7 +71,7 @@ h3 a:hover{
     background-color: rgba(0,0,0, 0.8);
   }
   #video iframe {
-    margin: 20% auto;
+    margin: 10% auto;
     display: block;
     border: none;
   }
