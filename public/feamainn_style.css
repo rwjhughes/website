@@ -85,3 +85,13 @@ h3 a:hover{
           margin: 50% auto;
       }
   }
+
+  .row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-flow: row wrap;
+    text-align: justify;
+    gap: 20px;
+    padding: 0 5%;
+}
