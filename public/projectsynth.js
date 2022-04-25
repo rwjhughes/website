@@ -48,11 +48,11 @@ const synth = new Tone.FMSynth({
 const now = Tone.now();
 const f = 80;
   
-  document.getElementById("audio").addEventListener("click", async () => {
-    await Tone.start();
-    document.getElementById("audio").style.opacity = 0;
-    console.log('audio is ready')
-  });
+  // document.getElementById("audio").addEventListener("click", async () => {
+  //   await Tone.start();
+  //   document.getElementById("audio").style.opacity = 0;
+  //   console.log('audio is ready')
+  // });
 
   for (let i = 0; i < 18; i++){
     document.getElementById(i).addEventListener("mouseenter", async () => {
@@ -77,7 +77,12 @@ const f = 80;
     synth.triggerAttackRelease(243.75, 0.5);
   });
 
+  document.getElementById("about").addEventListener("mouseenter", async () => {
+    delay.wet.value = 0.8;
+    synth.triggerAttackRelease(321.64, 0.5);
+  });
+
   document.getElementById("index").addEventListener("mouseenter", async () => {
     delay.wet.value = 0.9;
-    synth.triggerAttackRelease(321.64, 0.5);
+    synth.triggerAttackRelease(369.47, 0.5);
   });
