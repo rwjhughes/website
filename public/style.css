@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Akzidenz;
+  src: url("fonts/AkzidenzGrotesk-Regular.otf") format("opentype");
+}
+
 html, body {
   /* background-color: #CFCFCF; */
   margin: 0;
@@ -5,27 +10,27 @@ html, body {
   margin-right: 1%;
   background: black;
   color: white;
+  font-family: Akzidenz;
 }
 
-/* latin */
+/* latin
 @font-face {
-  font-family: 'Cousine';
+  
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: local('Cousine Regular'), local('Cousine-Regular'), url(https://fonts.gstatic.com/s/cousine/v14/d6lIkaiiRdih4SpP_SQvzA.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-/* latin */
+latin
 @font-face {
-  font-family: 'Cousine';
+  
   font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: local('Cousine Bold'), local('Cousine-Bold'), url(https://fonts.gstatic.com/s/cousine/v14/d6lNkaiiRdih4SpP9Z8K2TnM0g.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
+} */
 
 title
 {
@@ -33,7 +38,7 @@ text-decoration:none;
 }
 
 footer{
-  font-family: 'Cousine';
+  
   font-size: 75%;
   text-align: Center;
   margin-top: 2em;
@@ -44,8 +49,7 @@ footer{
 h1, h2, h3, h4 {
   font-weight: normal;
   color: white;
-  font-family: Cousine;
-  margin: 10px 0 0 0;
+  margin: 0;
 }
 
 h1 {
@@ -67,7 +71,6 @@ h1 a:hover
 }
 h2
 {
-font-family: 'Cousine';
 text-decoration:none;
 color: white;
 word-break: break-all;
@@ -100,43 +103,32 @@ h4 a:hover
   color: #c2c2c2;
 }
 
-p
-{
-text-decoration:none;
-font-family: 'Cousine';
+.socials {
+  text-align: center;
 }
-p a
-{
-text-decoration:none;
-}
-
-  .a {
-    font-family: 'Cousine';
-    text-align: center;
-    text-decoration: none;
-    color: white;
-  }
 
   .nav{
     display: flex;
     flex-direction: column;
     text-align: center;
     justify-content: center;
-    /* align-items: center; */
+    gap: 18px;
     margin: 0;
-    padding: 25px 0;
+    padding-bottom: 25px;
     max-height: 25%;
   }
 
   .header{
+    margin-top: 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: baseline;
   }
 
   .ga{
     /* margin-top: 30px; */
-    font-family: 'Cousine';
     text-decoration: none;
     color: white;
     background-color: green;
@@ -149,8 +141,7 @@ text-decoration:none;
   }
   
   .en{
-    margin-top: 30px;
-    font-family: 'Cousine';
+    /* margin-top: 30px; */
     text-decoration: none;
     color: white;
     background-color: #1187AB;
@@ -163,21 +154,13 @@ text-decoration:none;
   }
 
   div.b {
-    font-family: 'Cousine';
     text-indent: 300px;
     text-decoration: none;
-  }
-
-  f.c {
-    font-family: 'Cousine';
   }
 
   f.a {
     font-size: 130%;
     text-decoration: none;
-    color: white;
-    font-family: 'Cousine';
-  /*  background-color: white; */
   }
 
   .pon {
@@ -233,28 +216,7 @@ text-decoration:none;
 
   }
 
-   .music{
-    transition: text-shadow 0.5s ease;
-   }
-   .mhead{
-    transition: text-shadow 0.5s ease;
-   }
-   .projects{
-    transition: text-shadow 0.5s ease;
-   }
-   .phead{
-    transition: text-shadow 0.5s ease;
-   }
-   .concerts{
-    transition: text-shadow 0.5s ease;
-   }
-   .chead{
-    transition: text-shadow 0.5s ease;
-   }
-   .about{
-    transition: text-shadow 0.5s ease;
-   }
-   .ahead{
+   .music, .mhead, .projects, .phead, .concerts, .chead, .about, .ahead{
     transition: text-shadow 0.5s ease;
    }
 
@@ -289,10 +251,11 @@ text-decoration:none;
      flex-direction: column;
      flex-wrap: wrap;
      justify-content: space-around;
+     /* gap: 100px; */
     }
 
    .pages a{
-     padding-top: 30px;
+     margin-top: 30px;
      color: rgb(62, 66, 117);
      -webkit-text-stroke-width: 1px;
      -webkit-text-stroke-color: rgb(120, 142, 146);
@@ -307,10 +270,27 @@ text-decoration:none;
      gap: 15%;
    }
 
+   .research{
+     display: flex;
+     flex-direction: row-reverse;
+     text-align: right;
+     padding-right: 15%;
+   }
+
+   .research a{
+     text-decoration: none;
+     color: white;
+     outline: black;
+     transition: text-shadow 0.5s ease;
+   }
+
+   .research a:hover{
+    text-shadow: 18px 18px 2px #0c914f, -18px 18px 2px #2bc3a7, 0px -18px 2px #81f56f;
+   }
+
    .bottomright {
      opacity: .4;
      position: absolute;
-     font-family: 'Cousine';
      text-decoration: none;
      bottom: 15%;
      right: 10%;
@@ -324,7 +304,6 @@ text-decoration:none;
    }
 
 .submit {
-  font-family: 'Cousine';
   color: white;
   background-color: #9225DB;
   border: 2px solid purple;
@@ -335,12 +314,7 @@ text-decoration:none;
   background-color: #B261E9;
 }
 
-input{
-  font-family: 'Cousine';
-}
-
 table {
-  font-family: 'Cousine';
   width: 100%;
   z-index:1;
 }
@@ -361,7 +335,6 @@ table#scores td a {
 }
 
 .deeper h1, h2, h3, h4{
-  font-family: Cousine;
   text-decoration: none;
   /* color:black; */
   font-weight: regular;
@@ -402,7 +375,6 @@ td a:hover {
 .video-images
 {
   text-align: center;
-
 }
 #video-modal {
   display: none;
@@ -452,10 +424,6 @@ td a:hover {
   height: 40px;
   width: 33%;
   cursor: pointer;
-}
-
-span{
-  font-family: Cousine;
 }
 
 .faoi{
@@ -514,7 +482,6 @@ span{
 }
 
 .concertList{
-  font-family: Cousine;
   display: flex;
   flex-direction: column;
   justify-content: center;
