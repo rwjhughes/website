@@ -116,7 +116,25 @@ h4 a:hover
     margin: 0;
     padding-bottom: 25px;
     max-height: 25%;
+    position: sticky;
+    top: 0;
+    background-color: black;
+    background: radial-gradient(175px 90px,
+                rgba(0,0,0,1) 0%,
+                rgba(0,0,0,1) 80%,
+                rgba(0,0,0,0.7) 90%,
+                rgba(0,0,0,0) 100%),
+                -webkit-linear-gradient(bottom,
+                rgba(0,0,0,0) 0%,
+                rgba(0,0,0,0.3) 40%,
+                rgba(0,0,0,1) 95%);
   }
+
+  /* -webkit-linear-gradient(left, 
+                  rgba(0,0,0,0) 35%, 
+                  rgba(0,0,0,1) 40%,
+                  rgba(0,0,0,1) 60%,
+                  rgba(0,0,0,0) 65%), */
 
   .header{
     margin-top: 25px;
