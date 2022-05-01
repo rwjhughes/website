@@ -54,7 +54,7 @@ const f = 80;
   //   console.log('audio is ready')
   // });
 
-  for (let i = 0; i < 18; i++){
+  for (let i = 0; i < 19; i++){
     document.getElementById(i).addEventListener("mouseenter", async () => {
       delay.wet.value = 0.1;
       synth.modulationIndex.value = 180*(1/(1+i));
