@@ -4,27 +4,27 @@ const inmix = new Tone.Gain(0.9);
 const outmix = new Tone.Gain(0.9);
 const panner = new Tone.Panner(0);
 const reverb = new Tone.Reverb({
-      wet: .33,
-      decay: 15,
-    });
+  wet: .33,
+  decay: 15,
+});
 const delay = new Tone.PingPongDelay({
-      time: 0.1,
-      feedback: 0.5,
-      wet: 0.25,
-    });
+  time: 0.1,
+  feedback: 0.5,
+  wet: 0.25,
+});
 const lowpass = new Tone.Filter(3000, "lowpass");
 const highpass = new Tone.Filter(150, "highpass");
 const stereo = new Tone.StereoWidener(0.66);
-  // inmix => panner => reverb => delay
-  // => lowpass filter => highpass filter => stereo width => outmix
-  inmix.connect(panner);
-  panner.connect(reverb);
-  reverb.connect(delay);
-  delay.connect(lowpass);
-  lowpass.connect(highpass);
-  highpass.connect(stereo);
-  stereo.connect(outmix);
-  outmix.toDestination();
+// inmix => panner => reverb => delay
+// => lowpass filter => highpass filter => stereo width => outmix
+inmix.connect(panner);
+panner.connect(reverb);
+reverb.connect(delay);
+delay.connect(lowpass);
+lowpass.connect(highpass);
+highpass.connect(stereo);
+stereo.connect(outmix);
+outmix.toDestination();
 
 
 //synth
@@ -35,11 +35,11 @@ const synth = new Tone.FMSynth({
   modulationIndex: 5,
   modulation: {
     type: 'sawtooth'
-    },
+  },
   modulationEnvelope: {
-        attack: 0.5,
-        release: 2
-    },
+    attack: 0.5,
+    release: 2
+  },
   envelope: {
     attack: 0.2,
     decay: 0.1,
@@ -47,135 +47,157 @@ const synth = new Tone.FMSynth({
     release: 1.8,
     attackCurve: 'sine'
   }
-}).connect(inmix);    
+}).connect(inmix);
 
 const now = Tone.now();
 const timer = ms => new Promise(res => setTimeout(res, ms));
 
 // let Ascale = [0, 55, 63,18, 72.57, 83.36, 95.76, 110, 126.36, 145.15, 166.73, 191.52, 220];
-var notes =[];
-  
+var notes = [];
+
 motif = {
-    start: function(n){
+  start: function (n) {
     let notes0 = [];
     let notes1 = [];
-    var freq = Math.random()*40+140;
-    for (let i=0; i<n; i++){
+    var freq = Math.random() * 40 + 140;
+    for (let i = 0; i < n; i++) {
       // var pitch = scale[(Math.floor(Math.random()*scale.length))];
-      var pitch0 = freq*Math.pow(2,(Math.floor(Math.random()*10))/5)
+      var pitch0 = freq * Math.pow(2, (Math.floor(Math.random() * 10)) / 5)
       notes0.push(pitch0);
       // console.log(notes0);
     };
-    for (let i=0; i<n/2; i++){
+    for (let i = 0; i < n / 2; i++) {
       // var pitch = scale[(Math.floor(Math.random()*scale.length))];
-      var pitch1 = freq*Math.pow(2,(Math.floor(Math.random()*10))/5)
+      var pitch1 = freq * Math.pow(2, (Math.floor(Math.random() * 10)) / 5)
       notes1.push(pitch1);
       // console.log(notes1);
     };
-    seq1 = new Tone.Sequence(function(time, note){
+    seq1 = new Tone.Sequence(function (time, note) {
       synth.triggerAttackRelease(note, 0.3);
       // console.log(note);
-    }, [notes0,[,notes1],], 0.8);
+    }, [notes0, [, notes1],], 0.8);
 
-    seq2 = new Tone.Sequence(function(time, note){
+    seq2 = new Tone.Sequence(function (time, note) {
       synth.triggerAttackRelease(note, 0.3);
       // console.log(note);
-    }, [[notes0,notes1],[notes1,notes0],,], 0.6);
+    }, [[notes0, notes1], [notes1, notes0], ,], 0.6);
 
-    seq3 = new Tone.Sequence(function(time, note){
+    seq3 = new Tone.Sequence(function (time, note) {
       synth.triggerAttackRelease(note, 0.3);
       // console.log(note);
-    }, [[[notes0,notes1],notes0],notes1], 1.2);
+    }, [[[notes0, notes1], notes0], notes1], 1.2);
 
-    seq4 = new Tone.Sequence(function(time, note){
+    seq4 = new Tone.Sequence(function (time, note) {
       synth.triggerAttackRelease(note, 0.3);
       // console.log(note);
-    }, [[notes1,],notes0], 2);
-  
-   Tone.Transport.start();
+    }, [[notes1,], notes0], 2);
+
+    Tone.Transport.start();
   }
 };
-  
-  document.getElementById("audio").addEventListener("click", async () => {
-    await Tone.start();
-    document.getElementById("speaker").style.opacity = 0.6;
-    console.log('audio is ready');
-    // console.log(Tone.start().PromiseState());
-  });
 
-  
-  // social media links
-  for (let i=0; i < 5; i++){
-    document.getElementById(i).addEventListener("mouseenter", async () => {
-      synth.oscillator.type = 'triangle';
-      lowpass.frequency.value = 3000;
-      panner.pan.value = 0.5*i - 1;
-      synth.triggerAttackRelease(Math.pow(1.5,i)*140, 0.1);
-    });
-    document.getElementById(i).addEventListener("mouseleave", async () => {
-      await timer(100);
-      panner.pan.value = 0;
-    });
-  }
-  
-  //title links
-  document.getElementById("music").addEventListener("mouseenter", async () => {
-    synth.oscillator.type = 'sine';
+// pedro = {
+//   start: function (n) {
+//     seq5 = new Tone.Sequence(function (time, n) {
+//       synth.triggerAttackRelease(n, 0.3);
+//       // console.log(note);
+//     }, [110,220], 2);
+
+//     Tone.Transport.start();
+//   }
+// }
+
+
+document.getElementById("audio").addEventListener("click", async () => {
+  await Tone.start();
+  document.getElementById("speaker").style.opacity = 0.6;
+  console.log('audio is ready');
+  // console.log(Tone.start().PromiseState());
+});
+
+
+// social media links
+for (let i = 0; i < 5; i++) {
+  document.getElementById(i).addEventListener("mouseenter", async () => {
+    synth.oscillator.type = 'triangle';
     lowpass.frequency.value = 3000;
-    motif.start(4);
-    seq1.start();
+    panner.pan.value = 0.5 * i - 1;
+    synth.triggerAttackRelease(Math.pow(1.5, i) * 140, 0.1);
   });
-  document.getElementById("music").addEventListener("mouseleave", async () => {
-    lowpass.frequency.value = 500;
-    seq1.stop()
+  document.getElementById(i).addEventListener("mouseleave", async () => {
+    await timer(100);
+    panner.pan.value = 0;
   });
+}
 
-  document.getElementById("projects").addEventListener("mouseenter", async () => {
-    synth.oscillator.type = 'triangle';
-    lowpass.frequency.value = 5000;
-    motif.start(5);
-    seq2.start()
-  });
-  document.getElementById("projects").addEventListener("mouseleave", async () => {
-    lowpass.frequency.value = 500;
-    seq2.stop()
-  });
+//title links
+document.getElementById("music").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'sine';
+  lowpass.frequency.value = 3000;
+  motif.start(4);
+  seq1.start();
+});
+document.getElementById("music").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 500;
+  seq1.stop()
+});
 
-  document.getElementById("concerts").addEventListener("mouseenter", async () => {
-    synth.oscillator.type = 'sawtooth';
-    lowpass.frequency.value = 1800;
-    var noteInit = Math.random()*10+150;
-    motif.start(4);
-    seq3.start()
-  });
-  document.getElementById("concerts").addEventListener("mouseleave", async () => {
-    lowpass.frequency.value = 500;
-    seq3.stop()
-  });
+document.getElementById("projects").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'triangle';
+  lowpass.frequency.value = 5000;
+  motif.start(5);
+  seq2.start()
+});
+document.getElementById("projects").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 500;
+  seq2.stop()
+});
 
-  document.getElementById("about").addEventListener("mouseenter", async () => {
-    synth.oscillator.type = 'triangle';
-    lowpass.frequency.value = 1800;
-    var noteInit = Math.random()*10+150;
-    motif.start(3.5);
-    seq4.start()
-  });
-  document.getElementById("about").addEventListener("mouseleave", async () => {
-    lowpass.frequency.value = 500;
-    seq4.stop()
-  });
+document.getElementById("concerts").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'sawtooth';
+  lowpass.frequency.value = 1800;
+  motif.start(4);
+  seq3.start()
+});
+document.getElementById("concerts").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 500;
+  seq3.stop()
+});
 
-  document.getElementById("pon").addEventListener("mouseenter", async () => {
-    synth.oscillator.type = 'square';
-    lowpass.frequency.value = 1000;
-    synth.envelope.sustain = 0;
-    synth.triggerAttack(30)
-  });
-  document.getElementById("pon").addEventListener("mouseleave", async () => {
-    lowpass.frequency.value = 300;
-    synth.triggerRelease();
-    synth.envelope.sustain = 0.2;
-  });
+document.getElementById("about").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'triangle';
+  lowpass.frequency.value = 1800;
+  motif.start(3.5);
+  seq4.start()
+});
+document.getElementById("about").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 500;
+  seq4.stop()
+});
+
+document.getElementById("pon").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'square';
+  lowpass.frequency.value = 1000;
+  synth.envelope.sustain = 0;
+  synth.triggerAttack(30)
+});
+document.getElementById("pon").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 300;
+  synth.triggerRelease();
+  synth.envelope.sustain = 0.2;
+});
+
+// document.getElementById("masters").addEventListener("mouseenter", async () => {
+//   synth.oscillator.type = 'triangle';
+//   lowpass.frequency.value = 1800;
+//   pedro.start(6);
+//   seq5.start()
+// });
+// document.getElementById("masters").addEventListener("mouseleave", async () => {
+//   lowpass.frequency.value = 500;
+//   seq5.stop()
+// });
+
 
   // seq1 = new Tone.Sequence(function(time, note){
   //   synth.triggerAttackRelease(note, 0.5);
