@@ -548,3 +548,36 @@ h4 {
   justify-content: center;
   gap: 10px;
 }
+
+.tg4{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+
+.tg4 img{
+  max-height: 360px;
+}
+
+.tg4 p{
+  font-size: 120%;
+}
+
+.tg4 a:hover{
+  box-shadow: 5px 5px 2px red;
+  opacity: 0.75;
+}
+
+.lar{
+  font-size: 150%;
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  padding-bottom: 30px;
+}
+
+.lar a:hover{
+  text-shadow: 2px 3px 2px red;
+}
