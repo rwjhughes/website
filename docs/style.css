@@ -226,7 +226,7 @@ div.b {
 .mhead,
 .projects,
 .phead,
-.concerts,
+.agenda,
 .chead,
 .about,
 .ahead {
@@ -249,7 +249,7 @@ div.b {
   text-shadow: 15px 15px 2px #FFC074, -15px 15px 2px #B6C867, 0px -15px 2px #01937C;
 }
 
-.concerts:hover {
+.agenda:hover {
   text-shadow: 56px 48px 2px #7027A0, -56px 48px 2px #C32BAD, 0px -48px 2px #F56FAD;
 }
 

@@ -153,13 +153,13 @@ document.getElementById("projects").addEventListener("mouseleave", async () => {
   seq2.stop()
 });
 
-document.getElementById("concerts").addEventListener("mouseenter", async () => {
+document.getElementById("agenda").addEventListener("mouseenter", async () => {
   synth.oscillator.type = 'sawtooth';
   lowpass.frequency.value = 1800;
   motif.start(4);
   seq3.start()
 });
-document.getElementById("concerts").addEventListener("mouseleave", async () => {
+document.getElementById("agenda").addEventListener("mouseleave", async () => {
   lowpass.frequency.value = 500;
   seq3.stop()
 });
@@ -182,6 +182,18 @@ document.getElementById("pon").addEventListener("mouseenter", async () => {
   synth.triggerAttack(30)
 });
 document.getElementById("pon").addEventListener("mouseleave", async () => {
+  lowpass.frequency.value = 300;
+  synth.triggerRelease();
+  synth.envelope.sustain = 0.2;
+});
+
+document.getElementById("masters").addEventListener("mouseenter", async () => {
+  synth.oscillator.type = 'square';
+  lowpass.frequency.value = 1000;
+  synth.envelope.sustain = 0;
+  synth.triggerAttack(196)
+});
+document.getElementById("masters").addEventListener("mouseleave", async () => {
   lowpass.frequency.value = 300;
   synth.triggerRelease();
   synth.envelope.sustain = 0.2;

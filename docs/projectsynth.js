@@ -54,7 +54,7 @@ const f = 80;
   //   console.log('audio is ready')
   // });
 
-  for (let i = 0; i < 19; i++){
+  for (let i = 0; i < 20; i++){
     document.getElementById(i).addEventListener("mouseenter", async () => {
       delay.wet.value = 0.1;
       synth.modulationIndex.value = 180*(1/(1+i));
@@ -67,7 +67,7 @@ const f = 80;
     synth.triggerAttackRelease(212.2, 0.5);
   });
 
-  document.getElementById("concerts").addEventListener("mouseenter", async () => {
+  document.getElementById("agenda").addEventListener("mouseenter", async () => {
     delay.wet.value = 0.8;
     synth.triggerAttackRelease(280, 0.5);
   });
