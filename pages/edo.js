@@ -316,9 +316,9 @@ const Home = () => {
 
   return <div>
     <div className="deeper">
-      <title>EDO SYNTH - Richard Hughes</title>
+      <title>EDO SYNTH - Riste&aacuterd &Oacute hAodha</title>
       <h1>EDO SYNTH</h1>
-      <h2><a href="https://richardhughes.ie" target="_blank" title="Get me out of here!">Richard Hughes</a></h2>
+      <h2><a href="https://richardhughes.ie" target="_blank" title="Get me out of here!">Riste&aacuterd &Oacute hAodha</a></h2>
     </div>
     <a href="https://gaudeamusscreendive.com/routes/index.html">
       <div className="nav">
@@ -495,7 +495,7 @@ const Home = () => {
     </FlexRowWrapped>
     <br/>
 
-    <footer>&copy; Richard Hughes 2022</footer>
+    <footer>&copy; Riste&aacuterd &Oacute hAodha 2022</footer>
 
   </div>
 

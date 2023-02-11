@@ -196,32 +196,6 @@ div.b {
   background-image: url(foggy.png);
 }
 
-@media screen and (max-device-width: 480px) {
-  html {
-    /* font-size: 220%; */
-    margin: 0;
-  }
-
-  .pages {
-    padding: 0 !important;
-    margin: 0;
-  }
-
-  .pages a {
-    width: 800px;
-    word-break: break-word;
-  }
-
-  .concertList {
-    font-size: 75%;
-  }
-
-  .projectList {
-    max-width: 100%;
-  }
-
-}
-
 .music,
 .mhead,
 .projects,
@@ -271,7 +245,7 @@ div.b {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: space-around;
-  /* gap: 100px; */
+  text-align: center;  /* gap: 100px; */
 }
 
 .pages a {
@@ -379,7 +353,7 @@ h4 {
 .projectList {
   display: flex;
   flex-direction: column;
-  max-width: 600px;
+  max-width: 900px;
 }
 
 .projectList a {
@@ -466,6 +440,11 @@ h4 {
 
 .faoi a:hover {
   color: rgb(105, 50, 177);
+}
+
+.aboutText{
+  max-width: 450px;
+  text-align: justify;
 }
 
 .picMe {
@@ -580,4 +559,29 @@ h4 {
 
 .lar a:hover{
   text-shadow: 2px 3px 2px red;
+}
+
+@media screen and (max-device-width: 480px) {
+  html {
+    /* font-size: 220%; */
+    margin: 0;
+    font-size: 250%;
+  }
+
+  /* .pages {
+    padding: 0 !important;
+    margin: 0;
+  } */
+
+  .concertList {
+    font-size: 50%;
+  }
+
+  .agendaHead{
+    font-size: 33%;
+  }
+
+  .subpage{
+    flex-direction: column;
+  }
 }

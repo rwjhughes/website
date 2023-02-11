@@ -337,7 +337,7 @@ const Home = () => {
     <div class="deeper">
     <title>EDO NET</title>
       <h1>EDO NET</h1>
-      <h2><a href="index.html" title="Get me out of here!">Richard Hughes</a></h2>
+      <h2><a href="index.html" title="Get me out of here!">Riste&aacuterd &Oacute hAodha</a></h2>
     </div>
     <ul>
       <li>Generate a microtonal synth by entering in the starting frequency and the amount of ocatve divisions.</li>
@@ -440,7 +440,7 @@ const Home = () => {
 
     </div>
 
-    <footer>&copy; Richard Hughes 2022</footer>
+    <footer>&copy; Riste&aacuterd &Oacute hAodha 2022</footer>
 
   </div>
 
